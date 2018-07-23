@@ -17,7 +17,6 @@ export default class Flashcard extends React.Component {
     const flashCardStateCopy = this.state.flashcard.slice(0)
     flashCardStateCopy.push(newCard)
     this.setState({flashcard: flashCardStateCopy})
-    console.log(this.state)
     document.getElementById('question').value = ''
     document.getElementById('answer').value = ''
   }
