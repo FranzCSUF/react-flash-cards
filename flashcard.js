@@ -10,16 +10,20 @@ export default class Flashcard extends React.Component {
     this.saveOnClick = this.saveOnClick.bind(this)
   }
 
-  saveOnClick() {
-    const question = document.getElementById('question').value
-    const answer = document.getElementById('answer').value
-    const newCard = {question, answer}
+  saveOnClick(event) {
+    event.preventDefault()
+    const cardForm = event.target
+    const formData = new FormData(cardForm)
+    const cardObj = {}
+    for (var pair of formData.entries()) {
+      cardObj[pair[0]] = pair[1]
+    }
     const flashCardStateCopy = this.state.flashcard.slice(0)
-    flashCardStateCopy.push(newCard)
+    flashCardStateCopy.push(cardObj)
     this.setState({flashcard: flashCardStateCopy})
-    document.getElementById('question').value = ''
-    document.getElementById('answer').value = ''
+    cardForm.reset()
   }
+
   render() {
     return (
       <FlashcardBuild saveOnClick={this.saveOnClick}/>
