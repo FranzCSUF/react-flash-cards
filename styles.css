@@ -1,0 +1,18 @@
+form {
+  width: 30%;
+  height: 30%;
+  margin: 0 auto;
+  margin-top: 150px
+}
+
+.hidden {
+  visibility: hidden
+}
+
+.form-group {
+  margin-bottom: 80px;
+}
+
+#save-button {
+  text-align: center
+}
