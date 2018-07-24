@@ -1,5 +1,6 @@
 import React from 'react'
 import FlashcardBuild from './flashcardbuild'
+import Navigation from './navbar'
 
 export default class Flashcard extends React.Component {
   constructor(props) {
@@ -26,7 +27,10 @@ export default class Flashcard extends React.Component {
 
   render() {
     return (
-      <FlashcardBuild saveOnClick={this.saveOnClick}/>
+      <div>
+        <Navigation/>
+        <FlashcardBuild saveOnClick={this.saveOnClick}/>
+      </div>
     )
   }
 }
