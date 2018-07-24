@@ -34,10 +34,13 @@ export default class Flashcard extends React.Component {
   }
 
   render() {
+    const appState = this.state
+    const {view} = this.state
+    const {flashcards} = this.state
     return (
       <div>
         <Navigation cardsOnClick={this.cardsOnClick}/>
-        <FlashcardBuild saveOnClick={this.saveOnClick}/>
+        <FlashcardBuild saveOnClick={this.saveOnClick} view={view}/>
       </div>
     )
   }

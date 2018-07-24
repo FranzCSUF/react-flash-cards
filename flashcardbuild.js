@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function FlashcardBuild (props) {
   return (
-    <form onSubmit={props.saveOnClick} className="border card-body" >
+    <form onSubmit={props.saveOnClick} className={props.view === "New" ? "border card-body" : "border card-body hidden"}>
       <div className="form-group">
         <label htmlFor="inputQuestion">Question</label>
         <input type="text" name="question" className="form-control"/>
