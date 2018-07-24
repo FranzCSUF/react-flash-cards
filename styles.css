@@ -11,8 +11,41 @@ form {
 
 .form-group {
   margin-bottom: 80px;
+  font-size: 18pt
 }
 
 #save-button {
   text-align: center
 }
+
+.navbar {
+  background-color: #e3f2fd;
+}
+
+.card {
+  max-width: 35rem;
+  margin: 0 auto
+}
+
+.no-flash {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 36pt
+}
+
+.card-text {
+  font-size: 24pt
+}
+
+.create-form,
+.card-section {
+  margin-top: 300px
+}
+
+.create-button {
+  margin-top: 100px
+}
+
+
