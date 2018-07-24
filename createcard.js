@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CreateCard (props) {
   return (
-    <div>
+    <div className="create-form">
       {props.view === "New" &&
         <form onSubmit={props.saveOnClick} className={props.view === "New" ? "border card-body" : "border card-body hidden"}>
           <div className="form-group">

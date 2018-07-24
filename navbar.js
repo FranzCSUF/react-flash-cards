@@ -13,7 +13,7 @@ export default function Navigation(props) {
             <a className="nav-link" href="#" onClick={props.cardsOnClick}>Cards</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Create New</a>
+            <a className="nav-link" href="#" onClick={props.createOnClick}>Create New</a>
           </li>
         </ul>
       </div>

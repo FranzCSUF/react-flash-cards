@@ -11,6 +11,7 @@ form {
 
 .form-group {
   margin-bottom: 80px;
+  font-size: 18pt
 }
 
 #save-button {
@@ -30,12 +31,17 @@ form {
   text-align: center;
 }
 
-.no-flash-title {
-  font-size: 36px
+.card-title {
+  font-size: 36pt
 }
 
-.no-flash-container {
-  margin-top: 150px
+.card-text {
+  font-size: 24pt
+}
+
+.create-form,
+.card-section {
+  margin-top: 300px
 }
 
 .create-button {
