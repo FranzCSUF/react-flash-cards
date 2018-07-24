@@ -10,10 +10,10 @@ export default function Navigation(props) {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="#" onClick={props.cardsOnClick}>Cards</a>
+            <a className="nav-link" href="#" onClick={props.handleClickCards}>Cards</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#" onClick={props.createOnClick}>Create New</a>
+            <a className="nav-link" href="#" onClick={props.handleClickCreate}>Create New</a>
           </li>
         </ul>
       </div>

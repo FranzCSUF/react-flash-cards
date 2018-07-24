@@ -3,7 +3,7 @@ import React from 'react'
 export default function CreateCard (props) {
   return (
     <div className="create-form">
-      <form onSubmit={props.saveOnClick} className="border card-body">
+      <form onSubmit={props.handleClickSave} className="border card-body">
         <div className="form-group">
           <label htmlFor="inputQuestion">Question</label>
           <input type="text" name="question" className="form-control"/>

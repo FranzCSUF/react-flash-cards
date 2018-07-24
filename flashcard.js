@@ -6,16 +6,24 @@ import ViewCards from './viewcards'
 export default class Flashcard extends React.Component {
   constructor(props) {
     super(props)
+    const localView = window.localStorage.getItem('view')
+    const localFlashCards = window.localStorage.getItem('flashcards')
     this.state = {
-      view: 'New',
-      flashcards: []
+      view: JSON.parse(localView) || 'New',
+      flashcards: JSON.parse(localFlashCards) || []
     }
-    this.saveOnClick = this.saveOnClick.bind(this)
-    this.cardsOnClick = this.cardsOnClick.bind(this)
-    this.createOnClick = this.createOnClick.bind(this)
+    this.handleClickSave = this.handleClickSave.bind(this)
+    this.handleClickCards = this.handleClickCards.bind(this)
+    this.handleClickCreate = this.handleClickCreate.bind(this)
   }
-
-  saveOnClick(event) {
+  componentDidMount() {
+    window.addEventListener('beforeunload', event => {
+      for (var key in this.state) {
+        localStorage.setItem(key, JSON.stringify(this.state[key]))
+      }
+    })
+  }
+  handleClickSave(event) {
     event.preventDefault()
     const cardForm = event.target
     const formData = new FormData(cardForm)
@@ -28,27 +36,23 @@ export default class Flashcard extends React.Component {
     this.setState({flashcards: flashCardStateCopy})
     cardForm.reset()
   }
-
-  cardsOnClick (event) {
+  handleClickCards() {
     this.setState({view: 'Cards'})
   }
-
-  createOnClick (event) {
+  handleClickCreate() {
     this.setState({view: 'New'})
-    console.log.bind(this.state)
   }
-
   render() {
     const {view} = this.state
     const {flashcards} = this.state
     return (
       <div>
-        <Navigation cardsOnClick={this.cardsOnClick} createOnClick={this.createOnClick}/>
+        <Navigation handleClickCards={this.handleClickCards} handleClickCreate={this.handleClickCreate}/>
         {view === 'New' &&
-          <CreateCard saveOnClick={this.saveOnClick} view={view}/>
+          <CreateCard handleClickSave={this.handleClickSave} view={view}/>
         }
         {view === 'Cards' &&
-          <ViewCards flashcards={flashcards} createOnClick={this.createOnClick}/>
+          <ViewCards flashcards={flashcards} handleClickCreate={this.handleClickCreate}/>
         }
       </div>
     )
