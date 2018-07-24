@@ -6,9 +6,11 @@ import ViewCards from './viewcards'
 export default class Flashcard extends React.Component {
   constructor(props) {
     super(props)
+    const localView = window.localStorage.getItem('view')
+    const localFlashCards = window.localStorage.getItem('flashcards')
     this.state = {
-      view: 'New',
-      flashcards: []
+      view: JSON.parse(localView) || 'New',
+      flashcards: JSON.parse(localFlashCards) || []
     }
     this.handleClickSave = this.handleClickSave.bind(this)
     this.handleClickCards = this.handleClickCards.bind(this)
