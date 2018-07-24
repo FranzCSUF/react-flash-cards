@@ -27,12 +27,10 @@ export default class Flashcard extends React.Component {
     flashCardStateCopy.push(cardObj)
     this.setState({flashcards: flashCardStateCopy})
     cardForm.reset()
-    console.log(this.state.flashcards)
   }
 
   cardsOnClick (event) {
     this.setState({view: 'Cards'})
-    // console.log(this.state)
   }
 
   createOnClick (event) {
@@ -41,7 +39,6 @@ export default class Flashcard extends React.Component {
   }
 
   render() {
-    const appState = this.state
     const {view} = this.state
     const {flashcards} = this.state
     return (
