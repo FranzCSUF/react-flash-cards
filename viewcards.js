@@ -2,7 +2,7 @@ import React from 'react'
 
 function InsertCards(props) {
   return (
-    <div className={props.class} id="flashcard" key={props.index}>
+    <div className="card text-white bg-dark mb-3" id="flashcard" key={props.index}>
       <div className="card-header"></div>
       <div className="card-body">
         <h5 className="card-title">{props.question}</h5>
@@ -11,7 +11,6 @@ function InsertCards(props) {
     </div>
   )
 }
-
 function ShowMessage(props) {
   return (
     <div className="card no-flash-container">
@@ -22,19 +21,16 @@ function ShowMessage(props) {
   </div>
   )
 }
-
 export default function ViewCards(props) {
   const numFlashcards = props.flashcards.length
   return (
     <div className="card-section">
-      {props.view === "Cards" && numFlashcards > 0 &&
+      {numFlashcards > 0 &&
         props.flashcards.map((card, index) => <InsertCards
-          view={props.view}
           key={index}
           question={card.question}
-          class={props.view === "Cards" ? "card text-white bg-dark mb-3" : "hidden"}
           answer={card.answer}/>)}
-      {props.view === "Cards" && numFlashcards === 0 &&
+      {numFlashcards === 0 &&
         <ShowMessage
         createOnClick={props.createOnClick}/>
       }

@@ -44,8 +44,12 @@ export default class Flashcard extends React.Component {
     return (
       <div>
         <Navigation cardsOnClick={this.cardsOnClick} createOnClick={this.createOnClick}/>
-        <CreateCard saveOnClick={this.saveOnClick} view={view}/>
-        <ViewCards flashcards={flashcards} view={view} createOnClick={this.createOnClick}/>
+        {view === 'New' &&
+          <CreateCard saveOnClick={this.saveOnClick} view={view}/>
+        }
+        {view === 'Cards' &&
+          <ViewCards flashcards={flashcards} createOnClick={this.createOnClick}/>
+        }
       </div>
     )
   }
