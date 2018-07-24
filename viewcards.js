@@ -16,7 +16,7 @@ function ShowMessage(props) {
     <div className="card no-flash-container">
     <div className="card-body no-flash">
       <h5 className="card-title">You have no flashcards.</h5>
-      <a href="#" className="btn btn-primary create-button"  onClick={props.createOnClick}>Make One</a>
+      <a href="#" className="btn btn-primary create-button"  onClick={props.handleClickCreate}>Make One</a>
     </div>
   </div>
   )
@@ -32,7 +32,7 @@ export default function ViewCards(props) {
           answer={card.answer}/>)}
       {numFlashcards === 0 &&
         <ShowMessage
-        createOnClick={props.createOnClick}/>
+        createCard={props.createNew}/>
       }
     </div>
   )
