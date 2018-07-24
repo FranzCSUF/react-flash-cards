@@ -20,3 +20,26 @@ form {
 .navbar {
   background-color: #e3f2fd;
 }
+
+.card {
+  max-width: 35rem;
+  margin: 0 auto
+}
+
+.no-flash {
+  text-align: center;
+}
+
+.no-flash-title {
+  font-size: 36px
+}
+
+.no-flash-container {
+  margin-top: 150px
+}
+
+.create-button {
+  margin-top: 100px
+}
+
+

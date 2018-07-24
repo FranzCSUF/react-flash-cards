@@ -1,6 +1,7 @@
 import React from 'react'
-import FlashcardBuild from './flashcardbuild'
 import Navigation from './navbar'
+import CreateCard from './createcard'
+import ViewCards from './viewcards'
 
 export default class Flashcard extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ export default class Flashcard extends React.Component {
     }
     this.saveOnClick = this.saveOnClick.bind(this)
     this.cardsOnClick = this.cardsOnClick.bind(this)
+    this.createOnClick = this.createOnClick.bind(this)
   }
 
   saveOnClick(event) {
@@ -25,12 +27,17 @@ export default class Flashcard extends React.Component {
     flashCardStateCopy.push(cardObj)
     this.setState({flashcards: flashCardStateCopy})
     cardForm.reset()
-    console.log(this.state)
+    console.log(this.state.flashcards)
   }
 
   cardsOnClick (event) {
     this.setState({view: 'Cards'})
-    console.log(this.state)
+    // console.log(this.state)
+  }
+
+  createOnClick (event) {
+    this.setState({view: 'New'})
+    console.log.bind(this.state)
   }
 
   render() {
@@ -40,7 +47,8 @@ export default class Flashcard extends React.Component {
     return (
       <div>
         <Navigation cardsOnClick={this.cardsOnClick}/>
-        <FlashcardBuild saveOnClick={this.saveOnClick} view={view}/>
+        <CreateCard saveOnClick={this.saveOnClick} view={view}/>
+        <ViewCards flashcards={flashcards} view={view} createOnClick={this.createOnClick}/>
       </div>
     )
   }
