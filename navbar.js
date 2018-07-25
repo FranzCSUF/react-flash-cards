@@ -1,6 +1,8 @@
 import React from 'react'
 
 export default function Navigation(props) {
+  const cardsClass = props.value === "Cards" ? "nav-item active" : "nav-item"
+  const newClass = props.value === "New" ? "nav-item active" : "nav-item"
   return (
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="#">Cram Cards</a>
@@ -9,10 +11,10 @@ export default function Navigation(props) {
         </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
+          <li className={cardsClass}>
             <a className="nav-link" href="#" onClick={props.handleClickCards}>Cards</a>
           </li>
-          <li className="nav-item">
+          <li className={newClass}>
             <a className="nav-link" href="#" onClick={props.handleClickCreate}>Create New</a>
           </li>
         </ul>

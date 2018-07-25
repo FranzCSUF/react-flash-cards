@@ -47,7 +47,7 @@ export default class Flashcard extends React.Component {
     const {flashcards} = this.state
     return (
       <div>
-        <Navigation handleClickCards={this.handleClickCards} handleClickCreate={this.handleClickCreate}/>
+        <Navigation handleClickCards={this.handleClickCards} handleClickCreate={this.handleClickCreate} view={view}/>
         {view === 'New' &&
           <CreateCard handleClickSave={this.handleClickSave} view={view}/>
         }
