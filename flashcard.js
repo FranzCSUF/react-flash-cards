@@ -2,6 +2,7 @@ import React from 'react'
 import Navigation from './navbar'
 import CreateCard from './createcard'
 import ViewCards from './viewcards'
+import EditCard from './editcard'
 
 export default class Flashcard extends React.Component {
   constructor(props) {
@@ -48,19 +49,25 @@ export default class Flashcard extends React.Component {
   }
   handleClickEdit(event) {
     const index = event.target.getAttribute('data-index')
-    this.setState({edit: index})
+    this.setState({
+      view: "Edit",
+      edit: index
+    })
     console.log(this.state)
   }
   render() {
     const {view} = this.state
     const {flashcards} = this.state
     const editIndex = this.state.edit
-    const cardEdit = flashcards[editIndex]
+    const cardToEdit = flashcards[editIndex]
     return (
       <div>
         <Navigation handleClickCards={this.handleClickCards} handleClickCreate={this.handleClickCreate} view={view}/>
         {view === 'New' &&
           <CreateCard handleClickSave={this.handleClickSave} view={view}/>
+        }
+        {view === 'Edit' &&
+          <EditCard handleClickSaveEdit={this.handleClickSaveEdit} view={view} cardToEdit={cardToEdit}/>
         }
         {view === 'Cards' &&
           <ViewCards flashcards={flashcards} handleClickCreate={this.handleClickCreate} handleClickEdit={this.handleClickEdit}/>
