@@ -23,7 +23,8 @@ form {
 }
 
 .card {
-  max-width: 35rem;
+  width: 35rem;
+  height:20rem;
   margin: 0 auto
 }
 
@@ -46,6 +47,13 @@ form {
 
 .create-button {
   margin-top: 100px
+}
+
+#edit {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  font-size: 24pt
 }
 
 
