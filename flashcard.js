@@ -21,6 +21,7 @@ export default class Flashcard extends React.Component {
     this.handleCreate = this.handleCreate.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
     this.handleSaveEdit = this.handleSaveEdit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
   componentDidMount() {
     window.addEventListener('beforeunload', event => {
@@ -70,6 +71,11 @@ export default class Flashcard extends React.Component {
       view: "Cards",
       flashcards: flashCardStateCopy})
   }
+  handleDelete(event) {
+    const index = event.target.getAttribute('data-index')
+    const flashCardStateCopy = this.state.flashcards.slice(0)
+    flashCardStateCopy.splice(index, 1)
+  }
   render() {
     const {view} = this.state
     const {flashcards} = this.state
@@ -94,7 +100,8 @@ export default class Flashcard extends React.Component {
         {view === 'Cards' && <ViewCards
           flashcards={flashcards}
           handleCreate={this.handleCreate}
-          handleEdit={this.handleEdit}/>
+          handleEdit={this.handleEdit}
+          handleDelete={this.handleDelete}/>
         }
       </div>
     )

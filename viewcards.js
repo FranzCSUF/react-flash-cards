@@ -33,7 +33,8 @@ export default function ViewCards(props) {
           index={index}
           question={card.question}
           answer={card.answer}
-          handleEdit={props.handleEdit}/>)}
+          handleEdit={props.handleEdit}
+          handleDelete={props.handleDelete}/>)}
       {numFlashcards === 0 &&
         <ShowMessage
         handleCreate={props.handleCreate}/>
