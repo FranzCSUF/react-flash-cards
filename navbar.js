@@ -15,7 +15,7 @@ export default function Navigation(props) {
             <a className="nav-link" href="#" onClick={props.handleClickCards}>Cards</a>
           </li>
           <li className={newClass}>
-            <a className="nav-link" href="#" onClick={props.handleClickCreate}>Create New</a>
+            <a className="nav-link" href="#" onClick={props.handleCreate}>Create New</a>
           </li>
         </ul>
       </div>

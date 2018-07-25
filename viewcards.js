@@ -7,7 +7,7 @@ function InsertCards(props) {
       <div className="card-body">
         <h5 className="card-title">{props.question}</h5>
         <p className="card-text">{props.answer}</p>
-        <i className="far fa-edit" data-index={props.index} onClick={props.handleClickEdit} id="edit"></i>
+        <i className="far fa-edit" data-index={props.index} onClick={props.handleEdit} id="edit"></i>
       </div>
     </div>
   )
@@ -17,7 +17,7 @@ function ShowMessage(props) {
     <div className="card no-flash-container">
     <div className="card-body no-flash">
       <h5 className="card-title">You have no flashcards.</h5>
-      <a href="#" className="btn btn-primary create-button"  onClick={props.handleClickCreate}>Make One</a>
+      <a href="#" className="btn btn-primary create-button"  onClick={props.handleCreate}>Make One</a>
     </div>
   </div>
   )
@@ -32,10 +32,10 @@ export default function ViewCards(props) {
           index={index}
           question={card.question}
           answer={card.answer}
-          handleClickEdit={props.handleClickEdit}/>)}
+          handleEdit={props.handleEdit}/>)}
       {numFlashcards === 0 &&
         <ShowMessage
-        handleClickCreate={props.handleClickCreate}/>
+        handleCreate={props.handleCreate}/>
       }
     </div>
   )
