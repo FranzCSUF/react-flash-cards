@@ -49,11 +49,17 @@ form {
   margin-top: 100px
 }
 
-#edit {
+.fa-edit {
+  position: absolute;
+  right: 80px;
+  bottom: 30px;
+  font-size: 24pt
+}
+
+.fa-trash-alt {
   position: absolute;
   right: 30px;
   bottom: 30px;
   font-size: 24pt
 }
-
 
