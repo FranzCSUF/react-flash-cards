@@ -75,6 +75,8 @@ export default class Flashcard extends React.Component {
     const index = event.target.getAttribute('data-index')
     const flashCardStateCopy = this.state.flashcards.slice(0)
     flashCardStateCopy.splice(index, 1)
+    this.setState({
+      flashcards: flashCardStateCopy})
   }
   render() {
     const {view} = this.state
