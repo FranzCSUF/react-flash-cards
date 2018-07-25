@@ -32,7 +32,7 @@ export default function ViewCards(props) {
           answer={card.answer}/>)}
       {numFlashcards === 0 &&
         <ShowMessage
-        createCard={props.createNew}/>
+        handleClickCreate={props.handleClickCreate}/>
       }
     </div>
   )
