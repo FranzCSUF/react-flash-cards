@@ -8,9 +8,12 @@ export default class Flashcard extends React.Component {
     super(props)
     const localView = window.localStorage.getItem('view')
     const localFlashCards = window.localStorage.getItem('flashcards')
+    const localEdit = window.localStorage.getItem('edit')
     this.state = {
       view: JSON.parse(localView) || 'New',
+      edit: JSON.parse(localEdit) || null,
       flashcards: JSON.parse(localFlashCards) || []
+
     }
     this.handleClickSave = this.handleClickSave.bind(this)
     this.handleClickCards = this.handleClickCards.bind(this)
@@ -45,11 +48,14 @@ export default class Flashcard extends React.Component {
   }
   handleClickEdit(event) {
     const index = event.target.getAttribute('data-index')
-    console.log(index)
+    this.setState({edit: index})
+    console.log(this.state)
   }
   render() {
     const {view} = this.state
     const {flashcards} = this.state
+    const editIndex = this.state.edit
+    const cardEdit = flashcards[editIndex]
     return (
       <div>
         <Navigation handleClickCards={this.handleClickCards} handleClickCreate={this.handleClickCreate} view={view}/>
