@@ -49,4 +49,11 @@ form {
   margin-top: 100px
 }
 
+#edit {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  font-size: 24pt
+}
+
 
