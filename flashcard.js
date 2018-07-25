@@ -53,13 +53,14 @@ export default class Flashcard extends React.Component {
       view: "Edit",
       edit: index
     })
-    console.log(this.state)
   }
   render() {
     const {view} = this.state
     const {flashcards} = this.state
     const editIndex = this.state.edit
-    const cardToEdit = flashcards[editIndex]
+    const cardToEdit = this.state.flashcards[editIndex]
+    let questionToEdit = cardToEdit.question
+    let answerToEdit = cardToEdit.answer
     return (
       <div>
         <Navigation handleClickCards={this.handleClickCards} handleClickCreate={this.handleClickCreate} view={view}/>
@@ -67,7 +68,7 @@ export default class Flashcard extends React.Component {
           <CreateCard handleClickSave={this.handleClickSave} view={view}/>
         }
         {view === 'Edit' &&
-          <EditCard handleClickSaveEdit={this.handleClickSaveEdit} view={view} cardToEdit={cardToEdit}/>
+          <EditCard handleClickSaveEdit={this.handleClickSaveEdit} view={view} question={questionToEdit} answer={answerToEdit}/>
         }
         {view === 'Cards' &&
           <ViewCards flashcards={flashcards} handleClickCreate={this.handleClickCreate} handleClickEdit={this.handleClickEdit}/>
