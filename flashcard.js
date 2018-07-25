@@ -66,15 +66,15 @@ export default class Flashcard extends React.Component {
     }
     const flashCardStateCopy = this.state.flashcards.slice(0)
     flashCardStateCopy.splice(editIndex, 1, cardObj)
-    this.setState({flashcards: flashCardStateCopy})
+    this.setState({
+      view: "Cards",
+      flashcards: flashCardStateCopy})
   }
   render() {
     const {view} = this.state
     const {flashcards} = this.state
     const editIndex = this.state.edit
     const cardToEdit = this.state.flashcards[editIndex]
-    const questionToEdit = cardToEdit.question
-    const answerToEdit = cardToEdit.answer
     return (
       <div>
         <Navigation
@@ -87,8 +87,9 @@ export default class Flashcard extends React.Component {
         }
         {view === 'Edit' && <EditCard
           handleSaveEdit={this.handleSaveEdit}
-          view={view} question={questionToEdit}
-          answer={answerToEdit}/>
+          view={view}
+          cardToEdit={cardToEdit}
+          />
         }
         {view === 'Cards' && <ViewCards
           flashcards={flashcards}
