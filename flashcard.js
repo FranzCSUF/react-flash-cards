@@ -22,6 +22,7 @@ export default class Flashcard extends React.Component {
     this.handleEdit = this.handleEdit.bind(this)
     this.handleSaveEdit = this.handleSaveEdit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.handlePractice = this.handlePractice.bind(this)
   }
   componentDidMount() {
     window.addEventListener('beforeunload', event => {
@@ -48,6 +49,10 @@ export default class Flashcard extends React.Component {
   }
   handleCreate() {
     this.setState({view: 'New'})
+  }
+  handlePractice() {
+    this.setState({view: 'Practice'})
+    console.log(this.state)
   }
   handleEdit(event) {
     const index = event.target.getAttribute('data-index')
@@ -78,6 +83,7 @@ export default class Flashcard extends React.Component {
     this.setState({
       flashcards: flashCardStateCopy})
   }
+
   render() {
     const {view} = this.state
     const {flashcards} = this.state
@@ -88,6 +94,7 @@ export default class Flashcard extends React.Component {
         <Navigation
           handleClickCards={this.handleClickCards}
           handleCreate={this.handleCreate}
+          handlePractice={this.handlePractice}
           view={view}/>
         {view === 'New' && <CreateCard
           handleSave={this.handleSave}

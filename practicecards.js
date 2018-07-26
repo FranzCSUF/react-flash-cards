@@ -1,4 +1,5 @@
 import React from 'react'
+import PracticeCardBuild from './practicecardbuild'
 
 export default class PracticeCards extends React.Component {
   constructor(props) {
@@ -8,17 +9,13 @@ export default class PracticeCards extends React.Component {
       currentCard: 0
     }
   }
+  render() {
+    const {flashcards} = this.state
+    const currentCard = flashcards[this.state.currentCard]
+    const question = currentCard.question
+    const answer = currentCard.answer
+    return (
+      <PracticeCardBuild question={question} answer={answer}/>
+    )
+  }
 }
-
-
-
-  // return (
-  //   <div className="card text-white bg-dark mb-3" id="flashcard" key={props.index}>
-  //     <div className="card-header"></div>
-  //     <div className="card-body">
-  //       <h5 className="card-title">{props.question}</h5>
-  //       <p className="card-text">{props.answer}</p>
-  //       <i className="far fa-edit" data-index={props.index} onClick={props.handleEdit} id="edit"></i>
-  //     </div>
-  //   </div>
-  // )

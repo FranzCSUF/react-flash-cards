@@ -12,14 +12,14 @@ export default function Navigation(props) {
         </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-          <li className={cardsClass}>
+          <li>
             <a className="nav-link" href="#" onClick={props.handleClickCards}>Cards</a>
           </li>
-          <li className={newClass}>
+          <li>
             <a className="nav-link" href="#" onClick={props.handleCreate}>Create New</a>
           </li>
-          <li className={practiceClass}>
-            <a className="nav-link" href="#" onClick={props.handleCreate}>Practice</a>
+          <li>
+            <a className="nav-link" href="#" onClick={props.handlePractice}>Practice</a>
           </li>
         </ul>
       </div>
