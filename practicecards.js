@@ -19,7 +19,6 @@ export default class PracticeCards extends React.Component {
     this.setState((prevState, props) => {
       return {answerIsShown: !prevState.answerIsShown}
       })
-      console.log(this.state)
     }
 
   handlePrev() {

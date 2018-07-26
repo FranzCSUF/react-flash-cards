@@ -8,11 +8,11 @@ export default function PracticeCardBuild(props) {
         <div className="card-body">
           <h5 className="card-title">{props.question}</h5>
           {!props.answerIsShown &&
-            <i className="fas fa-arrow-circle-right" onClick={props.handleShowAnswer}><span>Show answer</span></i>
+            <i className="fas fa-arrow-circle-right show-answer-icon" onClick={props.handleShowAnswer}><span className="show-answer-label">Show answer</span></i>
           }
           {props.answerIsShown &&
             <React.Fragment>
-              <i className="fas fa-arrow-circle-down" onClick={props.handleShowAnswer}><span>Show answer</span></i>
+              <i className="fas fa-arrow-circle-down show-answer-icon" onClick={props.handleShowAnswer}><span className="show-answer-label">Show answer</span></i>
               <p className="card-text" id="practice-answer">{props.answer}</p>
             </React.Fragment>
           }

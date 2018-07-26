@@ -52,7 +52,6 @@ export default class Flashcard extends React.Component {
   }
   handlePractice() {
     this.setState({view: 'Practice'})
-    console.log(this.state)
   }
   handleEdit(event) {
     const index = event.target.getAttribute('data-index')
