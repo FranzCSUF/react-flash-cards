@@ -63,3 +63,20 @@ form {
   font-size: 24pt
 }
 
+.fa-arrow-circle-down,
+.fa-arrow-circle-right {
+  margin-top: 20px;
+  font-size: 24pt;
+}
+
+span {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 14pt;
+  margin-left: 20px;
+  font-weight: 400
+}
+
+#practice-answer {
+  margin-top: 20px
+}
+

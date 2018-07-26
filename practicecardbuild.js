@@ -7,7 +7,8 @@ export default function PracticeCardBuild(props) {
         <div className="card-header"></div>
         <div className="card-body">
           <h5 className="card-title">{props.question}</h5>
-          <p className="card-text">{props.answer}</p>
+            <i className="fas fa-arrow-circle-right" onClick={props.handleShowAnswer}><span>Show answer</span></i>
+          }
         </div>
       </div>
     </div>
