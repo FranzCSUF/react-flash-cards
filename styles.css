@@ -11,7 +11,7 @@ form {
 
 .form-group {
   margin-bottom: 80px;
-  font-size: 18pt
+  font-size: 24pt
 }
 
 #save-button {
@@ -24,7 +24,7 @@ form {
 
 .card {
   width: 35rem;
-  height:20rem;
+  min-height:20rem;
   margin: 0 auto
 }
 
@@ -33,7 +33,7 @@ form {
 }
 
 .card-title {
-  font-size: 36pt
+  font-size: 26pt
 }
 
 .card-text {
@@ -49,17 +49,48 @@ form {
   margin-top: 100px
 }
 
-.fa-edit {
+.edit-icon {
   position: absolute;
   right: 80px;
   bottom: 30px;
   font-size: 24pt
 }
 
-.fa-trash-alt {
+.delete-icon {
   position: absolute;
   right: 30px;
   bottom: 30px;
   font-size: 24pt
 }
 
+.show-answer-icon {
+  margin-top: 20px;
+  font-size: 24pt;
+}
+
+.show-answer-label {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 14pt;
+  margin-left: 20px;
+  font-weight: 400
+}
+
+#practice-answer {
+  margin-top: 20px
+}
+
+.controls {
+  margin: 0 auto;
+  margin-top: 50px;
+  max-width: 350px;
+  font-size: 54pt;
+  color: rgb(52, 58, 64)
+}
+
+.next-slider {
+  float: right
+}
+
+.prev-slider {
+  float: left
+}

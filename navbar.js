@@ -3,6 +3,7 @@ import React from 'react'
 export default function Navigation(props) {
   const cardsClass = props.value === "Cards" ? "nav-item active" : "nav-item"
   const newClass = props.value === "New" ? "nav-item active" : "nav-item"
+  const practiceClass = props.value === "practice" ? "nav-item active" : "nav-item"
   return (
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="#">Cram Cards</a>
@@ -11,11 +12,14 @@ export default function Navigation(props) {
         </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-          <li className={cardsClass}>
+          <li>
             <a className="nav-link" href="#" onClick={props.handleClickCards}>Cards</a>
           </li>
-          <li className={newClass}>
+          <li>
             <a className="nav-link" href="#" onClick={props.handleCreate}>Create New</a>
+          </li>
+          <li>
+            <a className="nav-link" href="#" onClick={props.handlePractice}>Practice</a>
           </li>
         </ul>
       </div>

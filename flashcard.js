@@ -3,18 +3,18 @@ import Navigation from './navbar'
 import CreateCard from './createcard'
 import ViewCards from './viewcards'
 import EditCard from './editcard'
+import PracticeCards from './practicecards'
 
 export default class Flashcard extends React.Component {
   constructor(props) {
     super(props)
-    const localView = window.localStorage.getItem('view')
-    const localFlashCards = window.localStorage.getItem('flashcards')
-    const localEdit = window.localStorage.getItem('edit')
+    const view = window.localStorage.getItem('view')
+    const flashCards = window.localStorage.getItem('flashcards')
+    const edit = window.localStorage.getItem('edit')
     this.state = {
-      view: JSON.parse(localView) || 'New',
-      edit: JSON.parse(localEdit) || null,
-      flashcards: JSON.parse(localFlashCards) || []
-
+      view: JSON.parse(view) || 'New',
+      edit: JSON.parse(edit) || null,
+      flashcards: JSON.parse(flashCards) || [],
     }
     this.handleSave = this.handleSave.bind(this)
     this.handleClickCards = this.handleClickCards.bind(this)
@@ -22,6 +22,7 @@ export default class Flashcard extends React.Component {
     this.handleEdit = this.handleEdit.bind(this)
     this.handleSaveEdit = this.handleSaveEdit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.handlePractice = this.handlePractice.bind(this)
   }
   componentDidMount() {
     window.addEventListener('beforeunload', event => {
@@ -48,6 +49,9 @@ export default class Flashcard extends React.Component {
   }
   handleCreate() {
     this.setState({view: 'New'})
+  }
+  handlePractice() {
+    this.setState({view: 'Practice'})
   }
   handleEdit(event) {
     const index = event.target.getAttribute('data-index')
@@ -78,6 +82,7 @@ export default class Flashcard extends React.Component {
     this.setState({
       flashcards: flashCardStateCopy})
   }
+
   render() {
     const {view} = this.state
     const {flashcards} = this.state
@@ -88,6 +93,7 @@ export default class Flashcard extends React.Component {
         <Navigation
           handleClickCards={this.handleClickCards}
           handleCreate={this.handleCreate}
+          handlePractice={this.handlePractice}
           view={view}/>
         {view === 'New' && <CreateCard
           handleSave={this.handleSave}
@@ -104,6 +110,9 @@ export default class Flashcard extends React.Component {
           handleCreate={this.handleCreate}
           handleEdit={this.handleEdit}
           handleDelete={this.handleDelete}/>
+        }
+        {view === 'Practice' && <PracticeCards
+          flashcards={flashcards}/>
         }
       </div>
     )
