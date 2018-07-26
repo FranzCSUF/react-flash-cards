@@ -83,10 +83,20 @@ span {
 .fa-angle-left,
 .fa-angle-right {
   font-size: 54pt;
-  margin: 50px 200px 0px;
+  /* margin: 50px 200px 0px; */
   color: rgb(52, 58, 64)
 }
 
 .controls {
-  text-align: center
+  margin: 0 auto;
+  margin-top: 50px;
+  max-width: 350px
+}
+
+.fa-angle-right {
+  float: right
+}
+
+.fa-angle-left {
+  float: left
 }
