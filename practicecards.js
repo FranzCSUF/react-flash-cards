@@ -1,6 +1,7 @@
 import React from 'react'
 import PracticeCardBuild from './practicecardbuild'
 import Controls from './practicecontrols'
+import ProgressBar from './progressbar'
 
 export default class PracticeCards extends React.Component {
   constructor(props) {
@@ -48,6 +49,7 @@ export default class PracticeCards extends React.Component {
       <div>
         <PracticeCardBuild question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer}/>
         <Controls handlePrev={this.handlePrev} handleNext={this.handleNext}/>
+        <ProgressBar/>
       </div>
     )
   }

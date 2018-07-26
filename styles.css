@@ -80,6 +80,7 @@ form {
 }
 
 .controls {
+  display: block;
   margin: 0 auto;
   margin-top: 50px;
   max-width: 350px;
@@ -93,4 +94,10 @@ form {
 
 .prev-slider {
   float: left
+}
+
+.progress {
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 10%
 }
