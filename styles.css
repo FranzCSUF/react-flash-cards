@@ -80,3 +80,13 @@ span {
   margin-top: 20px
 }
 
+.fa-angle-left,
+.fa-angle-right {
+  font-size: 54pt;
+  margin: 50px 200px 0px;
+  color: rgb(52, 58, 64)
+}
+
+.controls {
+  text-align: center
+}
