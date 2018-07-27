@@ -12,7 +12,7 @@ export default function PracticeCardBuild(props) {
           }
           {props.answerIsShown &&
             <React.Fragment>
-              <i className="fas fa-arrow-circle-down show-answer-icon" onClick={props.handleShowAnswer}><span className="show-answer-label">Show answer</span></i>
+              <i className="fas fa-arrow-circle-down show-answer-icon" onClick={props.handleShowAnswer}><span className="show-answer-label">Hide answer</span></i>
               <p className="card-text" id="practice-answer">{props.answer}</p>
             </React.Fragment>
           }

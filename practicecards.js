@@ -1,6 +1,7 @@
 import React from 'react'
 import PracticeCardBuild from './practicecardbuild'
 import Controls from './practicecontrols'
+import ProgressBar from './progressbar'
 
 export default class PracticeCards extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ export default class PracticeCards extends React.Component {
     this.state = {
       flashcards: props.flashcards,
       currentCard: 0,
-      answerIsShown: false
+      answerIsShown: false,
     }
     this.handleShowAnswer = this.handleShowAnswer.bind(this)
     this.handlePrev = this.handlePrev.bind(this)
@@ -16,7 +17,7 @@ export default class PracticeCards extends React.Component {
   }
 
   handleShowAnswer() {
-    this.setState((prevState, props) => {
+    this.setState(prevState => {
       return {answerIsShown: !prevState.answerIsShown}
       })
     }
@@ -33,21 +34,24 @@ export default class PracticeCards extends React.Component {
     const {flashcards} = this.props
     const {currentCard} = this.state
     this.setState({
-      currentCard: currentCard === flashcards.length - 1 ? 0 : currentCard + 1,
-      answerIsShown: false
+        currentCard: currentCard === flashcards.length - 1 ? 0 : currentCard + 1,
+        answerIsShown: false,
     })
   }
 
   render() {
     const {flashcards} = this.state
-    const currentCard = flashcards[this.state.currentCard]
-    const question = currentCard.question
-    const answer = currentCard.answer
+    const {currentCard} = this.state
+    const currentFlashcard = flashcards[this.state.currentCard]
+    const question = currentFlashcard.question
+    const answer = currentFlashcard.answer
     const {answerIsShown} = this.state
+    const progress = Math.round(((currentCard + 1) / flashcards.length) * 100)
     return (
       <div>
         <PracticeCardBuild question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer}/>
         <Controls handlePrev={this.handlePrev} handleNext={this.handleNext}/>
+        <ProgressBar progress={progress}/>
       </div>
     )
   }
