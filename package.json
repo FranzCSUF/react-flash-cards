@@ -14,6 +14,24 @@
   },
   "author": "",
   "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.html": [
+      "htmlhint"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/FranzCSUF/react-flash-cards/issues"
   },
