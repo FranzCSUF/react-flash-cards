@@ -42,7 +42,7 @@ form {
 
 .create-form,
 .card-section {
-  margin-top: 300px
+  margin-top: 200px
 }
 
 .create-button {
@@ -100,4 +100,10 @@ form {
   margin: 0 auto;
   width: 50%;
   margin-top: 10%
+}
+
+#message-completed {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 14pt;
+  font-weight: 400
 }
