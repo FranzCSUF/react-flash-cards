@@ -5,15 +5,15 @@ import ViewCards from './view-cards'
 import EditCard from './edit-card'
 import PracticeCards from './practice-cards'
 
-export default class Flashcard extends React.Component {
+export default class FlashCardApp extends React.Component {
   constructor(props) {
     super(props)
     const view = window.localStorage.getItem('view')
     const flashCards = window.localStorage.getItem('flashcards')
-    const edit = window.localStorage.getItem('edit')
+    const editIndex = window.localStorage.getItem('edit')
     this.state = {
       view: JSON.parse(view) || 'New',
-      edit: JSON.parse(edit) || null,
+      editIndex: JSON.parse(editIndex) || null,
       flashcards: JSON.parse(flashCards) || [],
     }
     this.handleSave = this.handleSave.bind(this)
@@ -57,7 +57,7 @@ export default class Flashcard extends React.Component {
     const index = event.target.getAttribute('data-index')
     this.setState({
       view: "Edit",
-      edit: index
+      editIndex: index
     })
   }
   handleSaveEdit(event) {
@@ -65,7 +65,7 @@ export default class Flashcard extends React.Component {
     const cardForm = event.target
     const formData = new FormData(cardForm)
     const cardObj = {}
-    const editIndex = this.state.edit
+    const {editIndex} = this.state
     for (var pair of formData.entries()) {
       cardObj[pair[0]] = pair[1]
     }
@@ -80,14 +80,13 @@ export default class Flashcard extends React.Component {
     const flashCardStateCopy = this.state.flashcards.slice(0)
     flashCardStateCopy.splice(index, 1)
     this.setState({
-      flashcards: flashCardStateCopy})
+      flashcards: flashCardStateCopy
+    })
   }
 
   render() {
-    const {view} = this.state
-    const {flashcards} = this.state
-    const editIndex = this.state.edit
-    const cardToEdit = this.state.flashcards[editIndex]
+    const {view, flashcards, editIndex} = this.state
+    const cardToEdit = flashcards[editIndex]
     return (
       <div>
         <Navigation

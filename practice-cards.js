@@ -40,12 +40,10 @@ export default class PracticeCards extends React.Component {
   }
 
   render() {
-    const {flashcards} = this.state
-    const {currentCard} = this.state
-    const currentFlashcard = flashcards[this.state.currentCard]
+    const {flashcards, currentCard, answerIsShown} = this.state
+    const currentFlashcard = flashcards[currentCard]
     const question = currentFlashcard.question
     const answer = currentFlashcard.answer
-    const {answerIsShown} = this.state
     const progress = Math.round(((currentCard + 1) / flashcards.length) * 100)
     return (
       <div>
