@@ -7,8 +7,10 @@ function InsertCards(props) {
       <div className="card-body">
         <h5 className="card-title">{props.question}</h5>
         <p className="card-text">{props.answer}</p>
-        <i className="far fa-edit edit-icon" data-index={props.index} onClick={props.handleEdit}></i>
-        <i className="far fa-trash-alt delete-icon" data-index={props.index} onClick={props.handleDelete}></i>
+        <div className="edit-and-delete-icons">
+          <i className="far fa-edit edit-icon" data-index={props.index} onClick={props.handleEdit}></i>
+          <i className="far fa-trash-alt delete-icon" data-index={props.index} onClick={props.handleDelete}></i>
+        </div>
       </div>
     </div>
   )

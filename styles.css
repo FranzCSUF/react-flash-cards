@@ -1,35 +1,36 @@
 body {
   font-family: 'Gaegu', cursive;
+  font-size: 20rem
 }
 
 .card-form {
-  width: 30%;
-  height: 30%;
+  width: 36rem;
   margin: 0 auto;
-  margin-top: 150px
+  margin-top: 3rem
 }
 
 .cram-cards-logo {
   font-family: 'Pacifico', cursive;
-  font-size: 24pt
+  font-size: 2rem
 }
 
 .navigation-tabs {
-  font-size: 14pt
+  font-size: 1.25rem
 }
 
 .flashcard-form-labels {
-  font-size: 24pt
+  font-size: 2rem
 }
 
 #save-button {
-  text-align: center
+  text-align: center;
 }
 
 .flash-card {
   width: 35rem;
-  min-height:20rem;  /* delete this later once you move edit and delete icons to box. Deleting now cause overlapping between letters and icons.*/
-  margin: 0 auto
+  min-height: 16rem;
+  margin: 0 auto;
+  font-size: 1rem
 }
 
 .no-flash-cards-message {
@@ -37,59 +38,45 @@ body {
 }
 
 .card-title {
-  font-size: 26pt
+  font-size: 2rem
 }
 
 .card-text {
-  font-size: 24pt
+  font-size: 1.75rem
 }
 
 .create-card-form,
 .card-container {
-  margin-top: 200px
+  margin-top: 12rem
 }
 
-.create-button {
-  margin-top: 100px
-}
-
-.edit-icon {  /* delete this later once you move edit and delete icons to box. Deleting now cause overlapping between letters and icons.*/
-  right: 80px;
-}
-
-.delete-icon {  /* delete this later once you move edit and delete icons to box. Deleting now cause overlapping between letters and icons.*/
-  right: 30px;
+.edit-and-delete-icons {
+  font-size: 1.50rem;
 }
 
 .edit-icon,
-.delete-icon {  /* delete this later once you move edit and delete icons to box. Deleting now cause overlapping between letters and icons.*/
-  position: absolute;
-  bottom: 30px;
-  font-size: 24pt
+.delete-icon {
+  margin: 3rem .50rem 1rem;
+  float: right
 }
 
 .show-answer-icon {
-  margin-top: 20px;
-  font-size: 24pt;
+  font-size: 1.5rem;
 }
 
 .show-answer-label {
   font-family: 'Gaegu', cursive;
-  font-size: 14pt;
-  margin-left: 20px;
+  font-size: 1.5rem;
+  margin-left: 1rem;
   font-weight: 400
-}
-
-#practice-answer {
-  margin-top: 20px
 }
 
 .practice-controls {
   display: block;
   margin: 0 auto;
-  margin-top: 50px;
-  max-width: 350px;
-  font-size: 54pt;
+  margin-top: 4rem;
+  max-width: 24rem;
+  font-size: 4.25rem;
   color: rgb(52, 58, 64)
 }
 
@@ -103,6 +90,6 @@ body {
 
 .progress-bar-container {
   margin: 0 auto;
-  width: 50%;
-  margin-top: 200px
+  width: 36rem;
+  margin-top: 13rem
 }
