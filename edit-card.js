@@ -3,7 +3,7 @@ import React from 'react'
 export default function EditCard (props) {
   return (
     <div className="create-card-form">
-      <form onSubmit={props.handleSaveEdit} className="border card-body card-form">
+      <form onSubmit={props.handleSaveEdit} className="border card-body card-edit-form">
         <div className="form-group flashcard-form-labels">
           <label htmlFor="inputQuestion">Edit Question</label>
           <input type="text" name="question" className="form-control" defaultValue={props.cardToEdit.question}/>

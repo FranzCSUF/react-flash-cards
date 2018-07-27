@@ -3,7 +3,7 @@ body {
   font-size: 20rem
 }
 
-.card-form {
+.card-edit-form {
   width: 36rem;
   margin: 0 auto;
   margin-top: 3rem
@@ -24,11 +24,11 @@ body {
 
 #save-button {
   text-align: center;
+  font-size: 1rem
 }
 
 .flash-card {
   width: 35rem;
-  min-height: 16rem;
   margin: 0 auto;
   font-size: 1rem
 }
@@ -56,10 +56,12 @@ body {
 
 .edit-icon,
 .delete-icon {
-  margin: 3rem .50rem 1rem;
   float: right
 }
 
+.edit-icon {
+  margin-right: 1rem;
+}
 .show-answer-icon {
   font-size: 1.5rem;
 }
