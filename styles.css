@@ -2,14 +2,14 @@ body {
   font-family: 'Gaegu', cursive;
 }
 
-form {
+.card-form {
   width: 30%;
   height: 30%;
   margin: 0 auto;
   margin-top: 150px
 }
 
-.navbar-brand {
+.cram-cards-logo {
   font-family: 'Pacifico', cursive;
   font-size: 24pt
 }
@@ -18,7 +18,7 @@ form {
   font-size: 14pt
 }
 
-.form-group {
+.flashcard-form-labels {
   margin-bottom: 80px;
   font-size: 24pt
 }
@@ -31,9 +31,9 @@ form {
   background-color: #e3f2fd;
 }
 
-.card {
+.flash-card {
   width: 35rem;
-  min-height:20rem;
+  min-height:20rem;  /* delete this later once you move edit and delete icons to box. Deleting now cause overlapping between letters and icons.*/
   margin: 0 auto
 }
 
@@ -49,8 +49,8 @@ form {
   font-size: 24pt
 }
 
-.create-form,
-.card-section {
+.create-card-form,
+.card-container {
   margin-top: 200px
 }
 
@@ -58,16 +58,16 @@ form {
   margin-top: 100px
 }
 
-.edit-icon {
+.edit-icon {  /* delete this later once you move edit and delete icons to box. Deleting now cause overlapping between letters and icons.*/
   right: 80px;
 }
 
-.delete-icon {
+.delete-icon {  /* delete this later once you move edit and delete icons to box. Deleting now cause overlapping between letters and icons.*/
   right: 30px;
 }
 
 .edit-icon,
-.delete-icon {
+.delete-icon {  /* delete this later once you move edit and delete icons to box. Deleting now cause overlapping between letters and icons.*/
   position: absolute;
   bottom: 30px;
   font-size: 24pt
@@ -89,7 +89,7 @@ form {
   margin-top: 20px
 }
 
-.controls {
+.practice-controls {
   display: block;
   margin: 0 auto;
   margin-top: 50px;
@@ -106,7 +106,7 @@ form {
   float: left
 }
 
-.progress {
+.progress-bar-container {
   margin: 0 auto;
   width: 50%;
   margin-top: 200px
