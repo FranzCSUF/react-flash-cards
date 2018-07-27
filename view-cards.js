@@ -16,7 +16,7 @@ function InsertCards(props) {
 function ShowMessage(props) {
   return (
     <div className="card no-flash-container">
-    <div className="card-body no-flash">
+    <div className="card-body no-flash-cards-message">
       <h5 className="card-title">You have no flashcards.</h5>
       <a href="#" className="btn btn-primary create-button"  onClick={props.handleCreate}>Make One</a>
     </div>

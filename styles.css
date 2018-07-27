@@ -14,21 +14,16 @@ body {
   font-size: 24pt
 }
 
-.nav-list {
+.navigation-tabs {
   font-size: 14pt
 }
 
 .flashcard-form-labels {
-  margin-bottom: 80px;
   font-size: 24pt
 }
 
 #save-button {
   text-align: center
-}
-
-.navbar {
-  background-color: #e3f2fd;
 }
 
 .flash-card {
@@ -37,7 +32,7 @@ body {
   margin: 0 auto
 }
 
-.no-flash {
+.no-flash-cards-message {
   text-align: center;
 }
 

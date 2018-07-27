@@ -11,7 +11,7 @@ export default function Navigation(props) {
           <span className="navbar-toggler-icon"></span>
         </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto nav-list">
+        <ul className="navbar-nav mr-auto navigation-tabs">
           <li>
             <a className={cardsClass} href="#" onClick={props.handleClickCards}>Cards</a>
           </li>
