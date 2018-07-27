@@ -9,10 +9,6 @@ form {
   margin-top: 150px
 }
 
-.hidden {
-  visibility: hidden
-}
-
 .navbar-brand {
   font-family: 'Pacifico', cursive;
   font-size: 24pt
@@ -63,15 +59,16 @@ form {
 }
 
 .edit-icon {
-  position: absolute;
   right: 80px;
-  bottom: 30px;
-  font-size: 24pt
 }
 
 .delete-icon {
-  position: absolute;
   right: 30px;
+}
+
+.edit-icon,
+.delete-icon {
+  position: absolute;
   bottom: 30px;
   font-size: 24pt
 }
