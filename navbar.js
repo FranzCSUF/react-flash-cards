@@ -1,9 +1,9 @@
 import React from 'react'
 
 export default function Navigation(props) {
-  const cardsClass = props.value === "Cards" ? "nav-item active" : "nav-item"
-  const newClass = props.value === "New" ? "nav-item active" : "nav-item"
-  const practiceClass = props.value === "practice" ? "nav-item active" : "nav-item"
+  const cardsClass = props.view === "Cards" ? "nav-link nav-item active underline" : "nav-link nav-item"
+  const newClass = props.view === "New" ? "nav-link nav-item active underline" : "nav-link nav-item"
+  const practiceClass = props.view === "Practice" ? "underline nav-link nav-item active" : "nav-link nav-item"
   return (
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="#">Cram Cards</a>
@@ -11,15 +11,15 @@ export default function Navigation(props) {
           <span className="navbar-toggler-icon"></span>
         </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
+        <ul className="navbar-nav mr-auto nav-list">
           <li>
-            <a className="nav-link" href="#" onClick={props.handleClickCards}>Cards</a>
+            <a className={cardsClass} href="#" onClick={props.handleClickCards}>Cards</a>
           </li>
           <li>
-            <a className="nav-link" href="#" onClick={props.handleCreate}>Create New</a>
+            <a className={newClass} href="#" onClick={props.handleCreate}>Create New</a>
           </li>
           <li>
-            <a className="nav-link" href="#" onClick={props.handlePractice}>Practice</a>
+            <a className={practiceClass} href="#" onClick={props.handlePractice}>Let's Cram!</a>
           </li>
         </ul>
       </div>
