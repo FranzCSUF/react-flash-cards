@@ -54,11 +54,6 @@ body {
   font-size: 1.50rem;
 }
 
-.edit-icon,
-.delete-icon {
-  float: right
-}
-
 .edit-icon {
   margin-right: 1rem;
 }
