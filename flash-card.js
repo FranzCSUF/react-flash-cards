@@ -23,6 +23,7 @@ export default class FlashCardApp extends React.Component {
     this.handleSaveEdit = this.handleSaveEdit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
     this.handlePractice = this.handlePractice.bind(this)
+    this.renderView = this.renderView.bind(this)
   }
   componentDidMount() {
     window.addEventListener('beforeunload', event => {
@@ -83,10 +84,40 @@ export default class FlashCardApp extends React.Component {
       flashcards: flashCardStateCopy
     })
   }
-
-  render() {
+  renderView() {
     const {view, flashcards, editIndex} = this.state
     const cardToEdit = flashcards[editIndex]
+    switch (this.state.view) {
+      case 'New' :
+        return (
+          <CreateCard
+          handleSave={this.handleSave}
+          view={view}/>
+        )
+      case 'Edit' :
+        return (
+          <EditCard
+          handleSaveEdit={this.handleSaveEdit}
+          view={view}
+          cardToEdit={cardToEdit}/>
+        )
+      case 'Cards' :
+        return (
+          <ViewCards
+          flashcards={flashcards}
+          handleCreate={this.handleCreate}
+          handleEdit={this.handleEdit}
+          handleDelete={this.handleDelete}/>
+        )
+      case 'Practice' :
+        return (
+          <PracticeCards
+          flashcards={flashcards}/>
+        )
+    }
+  }
+  render() {
+    const {view} = this.state
     return (
       <div>
         <Navigation
@@ -94,25 +125,7 @@ export default class FlashCardApp extends React.Component {
           handleCreate={this.handleCreate}
           handlePractice={this.handlePractice}
           view={view}/>
-        {view === 'New' && <CreateCard
-          handleSave={this.handleSave}
-          view={view}/>
-        }
-        {view === 'Edit' && <EditCard
-          handleSaveEdit={this.handleSaveEdit}
-          view={view}
-          cardToEdit={cardToEdit}
-          />
-        }
-        {view === 'Cards' && <ViewCards
-          flashcards={flashcards}
-          handleCreate={this.handleCreate}
-          handleEdit={this.handleEdit}
-          handleDelete={this.handleDelete}/>
-        }
-        {view === 'Practice' && <PracticeCards
-          flashcards={flashcards}/>
-        }
+        {this.renderView()}
       </div>
     )
   }
