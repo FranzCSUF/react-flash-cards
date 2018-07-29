@@ -1,9 +1,8 @@
 import React from 'react'
 import Navigation from './nav-bar'
-import CreateCard from './create-card'
 import ViewCards from './view-cards'
-import EditCard from './edit-card'
 import PracticeCards from './practice-cards'
+import CardForm from './card-form'
 
 export default class FlashCardApp extends React.Component {
   constructor(props) {
@@ -90,14 +89,14 @@ export default class FlashCardApp extends React.Component {
     switch (this.state.view) {
       case 'New' :
         return (
-          <CreateCard
+          <CardForm
           handleSave={this.handleSave}
           view={view}/>
         )
       case 'Edit' :
         return (
-          <EditCard
-          handleSaveEdit={this.handleSaveEdit}
+          <CardForm
+          handleSave={this.handleSaveEdit}
           view={view}
           cardToEdit={cardToEdit}/>
         )
