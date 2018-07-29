@@ -7,7 +7,6 @@ export default class PracticeCards extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      flashcards: props.flashcards,
       currentCard: 0,
       answerIsShown: false,
     }
@@ -38,9 +37,9 @@ export default class PracticeCards extends React.Component {
         answerIsShown: false,
     })
   }
-
   render() {
-    const {flashcards, currentCard, answerIsShown} = this.state
+    const {currentCard, answerIsShown} = this.state
+    const {flashcards} = this.props
     const currentFlashcard = flashcards[currentCard]
     const question = currentFlashcard.question
     const answer = currentFlashcard.answer
