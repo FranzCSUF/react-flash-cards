@@ -1,103 +1,79 @@
 body {
-  font-family: 'Gaegu', cursive;
+  font-size: 20rem;
+  font-family: 'Gaegu', cursive
 }
 
-form {
-  width: 30%;
-  height: 30%;
+.card-edit-form {
+  width: 36rem;
   margin: 0 auto;
-  margin-top: 150px
+  margin-top: 3rem
 }
 
-.hidden {
-  visibility: hidden
-}
-
-.navbar-brand {
+.cram-cards-logo {
   font-family: 'Pacifico', cursive;
-  font-size: 24pt
+  font-size: 2rem
 }
 
-.nav-list {
-  font-size: 14pt
+.navigation-tabs {
+  font-size: 1.25rem
 }
 
-.form-group {
-  margin-bottom: 80px;
-  font-size: 24pt
+.flashcard-form-labels {
+  font-size: 2rem
 }
 
 #save-button {
-  text-align: center
+  text-align: center;
+  font-size: 1rem
 }
 
-.navbar {
-  background-color: #e3f2fd;
-}
-
-.card {
+.flash-card {
   width: 35rem;
-  min-height:20rem;
-  margin: 0 auto
+  margin: 0 auto;
+  font-size: 1rem
 }
 
-.no-flash {
+.no-flash-cards-message {
   text-align: center;
 }
 
 .card-title {
-  font-size: 26pt
+  font-size: 2rem
 }
 
 .card-text {
-  font-size: 24pt
+  font-size: 1.75rem
 }
 
-.create-form,
-.card-section {
-  margin-top: 200px
+.create-card-form,
+.card-container {
+  margin-top: 12rem
 }
 
-.create-button {
-  margin-top: 100px
+.edit-and-delete-icons {
+  font-size: 1.50rem;
 }
 
 .edit-icon {
-  position: absolute;
-  right: 80px;
-  bottom: 30px;
-  font-size: 24pt
+  margin-right: 1rem;
 }
-
-.delete-icon {
-  position: absolute;
-  right: 30px;
-  bottom: 30px;
-  font-size: 24pt
-}
-
 .show-answer-icon {
-  margin-top: 20px;
-  font-size: 24pt;
+  font-size: 1.5rem;
 }
 
 .show-answer-label {
   font-family: 'Gaegu', cursive;
-  font-size: 14pt;
-  margin-left: 20px;
+  font-size: 1.5rem;
+  margin-left: 1rem;
   font-weight: 400
 }
 
-#practice-answer {
-  margin-top: 20px
-}
-
-.controls {
+.practice-controls {
   display: block;
   margin: 0 auto;
-  margin-top: 50px;
-  max-width: 350px;
-  font-size: 54pt;
+  margin-top: 4rem;
+  max-width: 24rem;
+  font-size: 4.25rem;
   color: rgb(52, 58, 64)
 }
 
@@ -109,8 +85,8 @@ form {
   float: left
 }
 
-.progress {
+.progress-bar-container {
   margin: 0 auto;
-  width: 50%;
-  margin-top: 200px
+  width: 36rem;
+  margin-top: 13rem
 }

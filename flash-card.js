@@ -1,19 +1,18 @@
 import React from 'react'
-import Navigation from './navbar'
-import CreateCard from './createcard'
-import ViewCards from './viewcards'
-import EditCard from './editcard'
-import PracticeCards from './practicecards'
+import Navigation from './nav-bar'
+import Cards from './cards'
+import Practice from './practice'
+import CardForm from './card-form'
 
-export default class Flashcard extends React.Component {
+export default class FlashCardApp extends React.Component {
   constructor(props) {
     super(props)
     const view = window.localStorage.getItem('view')
     const flashCards = window.localStorage.getItem('flashcards')
-    const edit = window.localStorage.getItem('edit')
+    const editIndex = window.localStorage.getItem('edit')
     this.state = {
       view: JSON.parse(view) || 'New',
-      edit: JSON.parse(edit) || null,
+      editIndex: JSON.parse(editIndex) || null,
       flashcards: JSON.parse(flashCards) || [],
     }
     this.handleSave = this.handleSave.bind(this)
@@ -23,6 +22,7 @@ export default class Flashcard extends React.Component {
     this.handleSaveEdit = this.handleSaveEdit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
     this.handlePractice = this.handlePractice.bind(this)
+    this.renderView = this.renderView.bind(this)
   }
   componentDidMount() {
     window.addEventListener('beforeunload', event => {
@@ -57,7 +57,7 @@ export default class Flashcard extends React.Component {
     const index = event.target.getAttribute('data-index')
     this.setState({
       view: "Edit",
-      edit: index
+      editIndex: index
     })
   }
   handleSaveEdit(event) {
@@ -65,7 +65,7 @@ export default class Flashcard extends React.Component {
     const cardForm = event.target
     const formData = new FormData(cardForm)
     const cardObj = {}
-    const editIndex = this.state.edit
+    const {editIndex} = this.state
     for (var pair of formData.entries()) {
       cardObj[pair[0]] = pair[1]
     }
@@ -80,14 +80,43 @@ export default class Flashcard extends React.Component {
     const flashCardStateCopy = this.state.flashcards.slice(0)
     flashCardStateCopy.splice(index, 1)
     this.setState({
-      flashcards: flashCardStateCopy})
+      flashcards: flashCardStateCopy
+    })
   }
-
+  renderView() {
+    const {view, flashcards, editIndex} = this.state
+    const cardToEdit = flashcards[editIndex]
+    switch (this.state.view) {
+      case 'New' :
+        return (
+          <CardForm
+          handleSave={this.handleSave}
+          view={view}/>
+        )
+      case 'Edit' :
+        return (
+          <CardForm
+          handleSave={this.handleSaveEdit}
+          view={view}
+          cardToEdit={cardToEdit}/>
+        )
+      case 'Cards' :
+        return (
+          <Cards
+          flashcards={flashcards}
+          handleCreate={this.handleCreate}
+          handleEdit={this.handleEdit}
+          handleDelete={this.handleDelete}/>
+        )
+      case 'Practice' :
+        return (
+          <Practice
+          flashcards={flashcards}/>
+        )
+    }
+  }
   render() {
     const {view} = this.state
-    const {flashcards} = this.state
-    const editIndex = this.state.edit
-    const cardToEdit = this.state.flashcards[editIndex]
     return (
       <div>
         <Navigation
@@ -95,25 +124,7 @@ export default class Flashcard extends React.Component {
           handleCreate={this.handleCreate}
           handlePractice={this.handlePractice}
           view={view}/>
-        {view === 'New' && <CreateCard
-          handleSave={this.handleSave}
-          view={view}/>
-        }
-        {view === 'Edit' && <EditCard
-          handleSaveEdit={this.handleSaveEdit}
-          view={view}
-          cardToEdit={cardToEdit}
-          />
-        }
-        {view === 'Cards' && <ViewCards
-          flashcards={flashcards}
-          handleCreate={this.handleCreate}
-          handleEdit={this.handleEdit}
-          handleDelete={this.handleDelete}/>
-        }
-        {view === 'Practice' && <PracticeCards
-          flashcards={flashcards}/>
-        }
+        {this.renderView()}
       </div>
     )
   }

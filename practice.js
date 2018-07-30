@@ -1,13 +1,12 @@
 import React from 'react'
-import PracticeCardBuild from './practicecardbuild'
-import Controls from './practicecontrols'
-import ProgressBar from './progressbar'
+import PracticeCard from './practice-card'
+import Controls from './practice-controls'
+import ProgressBar from './progress-bar'
 
-export default class PracticeCards extends React.Component {
+export default class Practice extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      flashcards: props.flashcards,
       currentCard: 0,
       answerIsShown: false,
     }
@@ -38,18 +37,16 @@ export default class PracticeCards extends React.Component {
         answerIsShown: false,
     })
   }
-
   render() {
-    const {flashcards} = this.state
-    const {currentCard} = this.state
-    const currentFlashcard = flashcards[this.state.currentCard]
+    const {currentCard, answerIsShown} = this.state
+    const {flashcards} = this.props
+    const currentFlashcard = flashcards[currentCard]
     const question = currentFlashcard.question
     const answer = currentFlashcard.answer
-    const {answerIsShown} = this.state
     const progress = Math.round(((currentCard + 1) / flashcards.length) * 100)
     return (
       <div>
-        <PracticeCardBuild question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer}/>
+        <PracticeCard question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer}/>
         <Controls handlePrev={this.handlePrev} handleNext={this.handleNext}/>
         <ProgressBar progress={progress}/>
       </div>
