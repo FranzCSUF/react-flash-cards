@@ -1,7 +1,7 @@
 import React from 'react'
 import Navigation from './nav-bar'
-import ViewCards from './view-cards'
-import PracticeCards from './practice-cards'
+import Cards from './cards'
+import Practice from './practice'
 import CardForm from './card-form'
 
 export default class FlashCardApp extends React.Component {
@@ -102,7 +102,7 @@ export default class FlashCardApp extends React.Component {
         )
       case 'Cards' :
         return (
-          <ViewCards
+          <Cards
           flashcards={flashcards}
           handleCreate={this.handleCreate}
           handleEdit={this.handleEdit}
@@ -110,7 +110,7 @@ export default class FlashCardApp extends React.Component {
         )
       case 'Practice' :
         return (
-          <PracticeCards
+          <Practice
           flashcards={flashcards}/>
         )
     }
