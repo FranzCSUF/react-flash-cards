@@ -3,7 +3,7 @@ import React from 'react'
 function Card(props) {
   return (
     <div className="card text-white bg-dark mb-3 flash-card" key={props.index}>
-      <div className="card-header"></div>
+      <div className="card-header">{props.topic}</div>
       <div className="card-body">
         <h5 className="card-title">{props.question}</h5>
         <p className="card-text">{props.answer}</p>
@@ -33,6 +33,7 @@ export default function Cards(props) {
         props.flashcards.map((card, index) => <Card
           key={index}
           index={index}
+          topic={card.topic}
           question={card.question}
           answer={card.answer}
           handleEdit={props.handleEdit}
