@@ -8,14 +8,16 @@ export default class FlashCardApp extends React.Component {
   constructor(props) {
     super(props)
     const view = window.localStorage.getItem('view')
-    const flashCards = window.localStorage.getItem('flashcards')
+    const flashcards = window.localStorage.getItem('flashcards')
+    const flashcardsFiltered = window.localStorage.getItem('flashcardsFiltered')
     const editIndex = window.localStorage.getItem('edit')
     const topics = window.localStorage.getItem('topics')
     const selectedTopic = window.localStorage.getItem('selectedTopic')
     this.state = {
       view: JSON.parse(view) || 'New',
       editIndex: JSON.parse(editIndex) || null,
-      flashcards: JSON.parse(flashCards) || [],
+      flashcards: JSON.parse(flashcards) || [],
+      flashcardsFiltered: JSON.parse(flashcardsFiltered) || [],
       topics: JSON.parse(topics) || [],
       selectedTopic: JSON.parse(selectedTopic) || []
     }
@@ -97,19 +99,23 @@ export default class FlashCardApp extends React.Component {
   }
   handleDelete(event) {
     const index = event.target.getAttribute('data-index')
-    const flashCardStateCopy = this.state.flashcards.slice(0)
-    flashCardStateCopy.splice(index, 1)
+    const flashcardStateCopy = this.state.flashcards.slice(0)
+    flashcardStateCopy.splice(index, 1)
     this.setState({
-      flashcards: flashCardStateCopy
+      flashcards: flashcardStateCopy
     })
   }
-    handleSelectedTopic(event) {
+  handleSelectedTopic(event) {
     const topic = event.target.textContent
-    this.setState({currentTopic: topic})
-    console.log(this.state.currentTopic)
+    const flashcardsFilteredCopy = this.state.flashcards.slice(0)
+    const filteredCards = flashcardsFilteredCopy.filter(flashcard => flashcard.topic === topic)
+    this.setState({
+      currentTopic: topic,
+      flashcardsFiltered: filteredCards
+    })
   }
   renderView() {
-    const {view, flashcards, editIndex, topics, selectedTopic} = this.state
+    const {view, flashcards, editIndex, topics, selectedTopic, flashcardsFiltered} = this.state
     const cardToEdit = flashcards[editIndex]
     switch (this.state.view) {
       case 'New' :
@@ -138,7 +144,8 @@ export default class FlashCardApp extends React.Component {
           <Practice
           flashcards={flashcards}
           topics={topics}
-          selectedTopic={selectedTopic}/>
+          selectedTopic={selectedTopic}
+          flashcardsFiltered={flashcardsFiltered}/>
         )
     }
   }
