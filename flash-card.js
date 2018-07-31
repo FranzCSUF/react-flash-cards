@@ -10,12 +10,10 @@ export default class FlashCardApp extends React.Component {
     const view = window.localStorage.getItem('view')
     const flashCards = window.localStorage.getItem('flashcards')
     const editIndex = window.localStorage.getItem('edit')
-    const topics = window.localStorage.getItem('topics')
     this.state = {
       view: JSON.parse(view) || 'New',
       editIndex: JSON.parse(editIndex) || null,
       flashcards: JSON.parse(flashCards) || [],
-      topics: JSON.parse(topics) || [],
     }
     this.handleSave = this.handleSave.bind(this)
     this.handleClickCards = this.handleClickCards.bind(this)
