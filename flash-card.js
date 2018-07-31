@@ -90,6 +90,7 @@ export default class FlashCardApp extends React.Component {
       flashcards: flashcardsCopy,
       topics: topicsCopy
     })
+    console.log(this.state.topics)
   }
   handleDelete(event) {
     const index = event.target.getAttribute('data-index')
@@ -139,6 +140,7 @@ export default class FlashCardApp extends React.Component {
           handleClickCards={this.handleClickCards}
           handleCreate={this.handleCreate}
           handlePractice={this.handlePractice}
+          topics={this.state.topics}
           view={view}/>
         {this.renderView()}
       </div>
