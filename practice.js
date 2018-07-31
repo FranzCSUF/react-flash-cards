@@ -9,6 +9,8 @@ export default class Practice extends React.Component {
     this.state = {
       currentCard: 0,
       answerIsShown: false,
+      flashcards: props.flashcards,
+      currentTopic: null
     }
     this.handleShowAnswer = this.handleShowAnswer.bind(this)
     this.handlePrev = this.handlePrev.bind(this)
