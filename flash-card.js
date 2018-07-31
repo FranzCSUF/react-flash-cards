@@ -41,9 +41,17 @@ export default class FlashCardApp extends React.Component {
     for (var pair of formData.entries()) {
       cardObj[pair[0]] = pair[1]
     }
-    const flashCardStateCopy = this.state.flashcards.slice(0)
-    flashCardStateCopy.push(cardObj)
-    this.setState({flashcards: flashCardStateCopy})
+    const flashcardsCopy = this.state.flashcards.slice(0)
+    flashcardsCopy.push(cardObj)
+    const topicsCopy = this.state.topics.slice(0)
+    if (topicsCopy.indexOf(cardObj.topic) === -1) {
+      topicsCopy.push(cardObj.topic)
+    }
+    this.setState({
+      flashcards: flashcardsCopy,
+      topics: topicsCopy
+    })
+    console.log(this.state)
     cardForm.reset()
   }
   handleClickCards() {
@@ -71,11 +79,17 @@ export default class FlashCardApp extends React.Component {
     for (var pair of formData.entries()) {
       cardObj[pair[0]] = pair[1]
     }
-    const flashCardStateCopy = this.state.flashcards.slice(0)
-    flashCardStateCopy.splice(editIndex, 1, cardObj)
+    const flashcardsCopy = this.state.flashcards.slice(0)
+    flashcardsCopy.splice(editIndex, 1, cardObj)
+    const topicsCopy = this.state.topics.slice(0)
+    if (topicsCopy.indexOf(cardObj.topic) === -1) {
+      topicsCopy.push(cardObj.topic)
+    }
     this.setState({
       view: "Cards",
-      flashcards: flashCardStateCopy})
+      flashcards: flashcardsCopy,
+      topics: topicsCopy
+    })
   }
   handleDelete(event) {
     const index = event.target.getAttribute('data-index')
