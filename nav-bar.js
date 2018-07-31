@@ -1,7 +1,7 @@
 import React from 'react'
 
 function DropDownList(props) {
-  return props.topics.map((topic, index) => <a className="dropdown-item" key={index} href="#">{topic}</a>)
+  return props.topics.map((topic, index) => <a className="dropdown-item" key={index} onClick={props.handleSelectedTopic} href="#">{topic}</a>)
 }
 
 export default function Navigation(props) {
@@ -27,7 +27,9 @@ export default function Navigation(props) {
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a className="dropdown-item" href="#">Topics</a>
               <div className="dropdown-divider"></div>
-              <DropDownList topics={props.topics}/>
+              <DropDownList
+                topics={props.topics}
+                handleSelectedTopic={props.handleSelectedTopic}/>
             </div>
           </li>
         </ul>

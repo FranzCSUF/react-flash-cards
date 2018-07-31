@@ -9,8 +9,7 @@ export default class Practice extends React.Component {
     this.state = {
       currentCard: 0,
       answerIsShown: false,
-      flashcards: props.flashcards,
-      currentTopic: null
+      selectedTopic: props.selectedTopic
     }
     this.handleShowAnswer = this.handleShowAnswer.bind(this)
     this.handlePrev = this.handlePrev.bind(this)
@@ -22,7 +21,6 @@ export default class Practice extends React.Component {
       return {answerIsShown: !prevState.answerIsShown}
       })
     }
-
   handlePrev() {
     const {flashcards} = this.props
     const {currentCard} = this.state
@@ -40,15 +38,16 @@ export default class Practice extends React.Component {
     })
   }
   render() {
-    const {currentCard, answerIsShown} = this.state
+    const {currentCard, answerIsShown, selectedTopic} = this.state
     const {flashcards} = this.props
     const currentFlashcard = flashcards[currentCard]
+    const topic = currentFlashcard.topic
     const question = currentFlashcard.question
     const answer = currentFlashcard.answer
     const progress = Math.round(((currentCard + 1) / flashcards.length) * 100)
     return (
       <div>
-        <PracticeCard question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer}/>
+        <PracticeCard topic={topic} question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer} selectedTopic={selectedTopic}/>
         <Controls handlePrev={this.handlePrev} handleNext={this.handleNext}/>
         <ProgressBar progress={progress}/>
       </div>

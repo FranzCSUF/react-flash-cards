@@ -11,11 +11,13 @@ export default class FlashCardApp extends React.Component {
     const flashCards = window.localStorage.getItem('flashcards')
     const editIndex = window.localStorage.getItem('edit')
     const topics = window.localStorage.getItem('topics')
+    const selectedTopic = window.localStorage.getItem('selectedTopic')
     this.state = {
       view: JSON.parse(view) || 'New',
       editIndex: JSON.parse(editIndex) || null,
       flashcards: JSON.parse(flashCards) || [],
       topics: JSON.parse(topics) || [],
+      selectedTopic: JSON.parse(selectedTopic) || []
     }
     this.handleSave = this.handleSave.bind(this)
     this.handleClickCards = this.handleClickCards.bind(this)
@@ -25,6 +27,7 @@ export default class FlashCardApp extends React.Component {
     this.handleDelete = this.handleDelete.bind(this)
     this.handlePractice = this.handlePractice.bind(this)
     this.renderView = this.renderView.bind(this)
+    this.handleSelectedTopic = this.handleSelectedTopic.bind(this)
   }
   componentDidMount() {
     window.addEventListener('beforeunload', event => {
@@ -100,8 +103,13 @@ export default class FlashCardApp extends React.Component {
       flashcards: flashCardStateCopy
     })
   }
+    handleSelectedTopic(event) {
+    const topic = event.target.textContent
+    this.setState({currentTopic: topic})
+    console.log(this.state.currentTopic)
+  }
   renderView() {
-    const {view, flashcards, editIndex} = this.state
+    const {view, flashcards, editIndex, topics, selectedTopic} = this.state
     const cardToEdit = flashcards[editIndex]
     switch (this.state.view) {
       case 'New' :
@@ -128,19 +136,22 @@ export default class FlashCardApp extends React.Component {
       case 'Practice' :
         return (
           <Practice
-          flashcards={flashcards}/>
+          flashcards={flashcards}
+          topics={topics}
+          selectedTopic={selectedTopic}/>
         )
     }
   }
   render() {
-    const {view} = this.state
+    const {view, topics} = this.state
     return (
       <div>
         <Navigation
           handleClickCards={this.handleClickCards}
           handleCreate={this.handleCreate}
           handlePractice={this.handlePractice}
-          topics={this.state.topics}
+          handleSelectedTopic={this.handleSelectedTopic}
+          topics={topics}
           view={view}/>
         {this.renderView()}
       </div>
