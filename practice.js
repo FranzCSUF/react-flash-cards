@@ -7,9 +7,9 @@ export default class Practice extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      flashcards: this.props.flashcardsFiltered,
       currentCard: 0,
       answerIsShown: false,
-      selectedTopic: props.selectedTopic
     }
     this.handleShowAnswer = this.handleShowAnswer.bind(this)
     this.handlePrev = this.handlePrev.bind(this)
@@ -22,7 +22,7 @@ export default class Practice extends React.Component {
       })
     }
   handlePrev() {
-    const {flashcards} = this.props
+    const {flashcards} = this.state
     const {currentCard} = this.state
     this.setState({
       currentCard: currentCard === 0 ? flashcards.length - 1 : currentCard - 1,
@@ -30,7 +30,7 @@ export default class Practice extends React.Component {
     })
   }
   handleNext() {
-    const {flashcards} = this.props
+    const {flashcards} = this.state
     const {currentCard} = this.state
     this.setState({
         currentCard: currentCard === flashcards.length - 1 ? 0 : currentCard + 1,
@@ -38,8 +38,8 @@ export default class Practice extends React.Component {
     })
   }
   render() {
-    const {currentCard, answerIsShown, selectedTopic} = this.state
-    const {flashcards} = this.props
+    const {currentCard, answerIsShown} = this.state
+    const {flashcards} = this.state
     const currentFlashcard = flashcards[currentCard]
     const topic = currentFlashcard.topic
     const question = currentFlashcard.question
@@ -47,7 +47,7 @@ export default class Practice extends React.Component {
     const progress = Math.round(((currentCard + 1) / flashcards.length) * 100)
     return (
       <div>
-        <PracticeCard topic={topic} question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer} selectedTopic={selectedTopic}/>
+        <PracticeCard topic={topic} question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer}/>
         <Controls handlePrev={this.handlePrev} handleNext={this.handleNext}/>
         <ProgressBar progress={progress}/>
       </div>

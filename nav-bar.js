@@ -27,6 +27,7 @@ export default function Navigation(props) {
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a className="dropdown-item" href="#">Topics</a>
               <div className="dropdown-divider"></div>
+              <a className="dropdown-item" onClick={props.handleAll} href="#">All</a>
               <DropDownList
                 topics={props.topics}
                 handleSelectedTopic={props.handleSelectedTopic}/>
