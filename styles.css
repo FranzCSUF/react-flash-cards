@@ -27,10 +27,19 @@ body {
   font-size: 1rem;
 }
 
+#make-flashcard-button {
+  margin-top: 5rem;
+}
+
 .flash-card {
   width: 35rem;
   margin: 0 auto;
   font-size: 1rem;
+}
+
+.no-flash-container {
+  font-size: 1rem;
+  border-style: none;
 }
 
 .no-flash-cards-message {

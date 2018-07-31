@@ -38,8 +38,7 @@ export default class Practice extends React.Component {
     })
   }
   render() {
-    const {currentCard, answerIsShown} = this.state
-    const {flashcards} = this.state
+    const {currentCard, answerIsShown, flashcards} = this.state
     const currentFlashcard = flashcards[currentCard]
     const topic = currentFlashcard.topic
     const question = currentFlashcard.question

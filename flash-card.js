@@ -180,7 +180,7 @@ export default class FlashCardApp extends React.Component {
     }
   }
   render() {
-    const {view, topics} = this.state
+    const {view, topics, flashcards} = this.state
     return (
       <div>
         <Navigation
@@ -189,6 +189,7 @@ export default class FlashCardApp extends React.Component {
           handlePractice={this.handlePractice}
           handleSelectedTopic={this.handleSelectedTopic}
           handleAll={this.handleAll}
+          flashcards={flashcards}
           topics={topics}
           view={view}/>
         {this.renderView()}
