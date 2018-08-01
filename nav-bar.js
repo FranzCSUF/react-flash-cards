@@ -24,7 +24,7 @@ export default function Navigation(props) {
           </li>
           {props.flashcards.length > 0 &&
           <li className="nav-item dropdown">
-            <a className={practiceClass} href="#" onClick={props.handlePractice} data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false" role="button">Let's Cram!</a>
+            <a className={practiceClass} href="#" onClick={props.handlePractice} data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false" role="button">Let&apos;s Cram!</a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a className="dropdown-item" href="#">Topics</a>
               <div className="dropdown-divider"></div>
