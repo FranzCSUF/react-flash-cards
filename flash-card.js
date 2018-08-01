@@ -9,7 +9,6 @@ export default class FlashCardApp extends React.Component {
     super(props)
     const view = window.localStorage.getItem('view')
     const flashcards = window.localStorage.getItem('flashcards')
-    const flashcardsFiltered = window.localStorage.getItem('flashcardsFiltered')
     const editIndex = window.localStorage.getItem('edit')
     const topics = window.localStorage.getItem('topics')
     const selectedTopic = window.localStorage.getItem('selectedTopic')
@@ -17,7 +16,6 @@ export default class FlashCardApp extends React.Component {
       view: JSON.parse(view) || 'New',
       editIndex: JSON.parse(editIndex) || null,
       flashcards: JSON.parse(flashcards) || [],
-      flashcardsFiltered: JSON.parse(flashcardsFiltered) || [],
       topics: JSON.parse(topics) || [],
       selectedTopic: JSON.parse(selectedTopic) || []
     }
@@ -67,7 +65,6 @@ export default class FlashCardApp extends React.Component {
   }
   handlePractice() {
     this.setState({view: 'Practice'})
-    console.log(this.state.view)
   }
   handleEdit(event) {
     const index = event.target.getAttribute('data-index')
@@ -88,8 +85,8 @@ export default class FlashCardApp extends React.Component {
     const flashcardsCopy = this.state.flashcards.slice(0)
     flashcardsCopy.splice(editIndex, 1, cardObj)
     const updatedTopics= []
-    flashcardsCopy.map(flashcard =>  {
-      if (updatedTopics.indexOf(flashcard.topic) === -1) {
+    flashcardsCopy.forEach(flashcard =>  {
+      if (!updatedTopics.includes(flashcard.topic)) {
         updatedTopics.push(flashcard.topic)
       }
     })
@@ -104,8 +101,8 @@ export default class FlashCardApp extends React.Component {
     const flashcardStateCopy = this.state.flashcards.slice(0)
     flashcardStateCopy.splice(index, 1)
     const updatedTopics= []
-    flashcardStateCopy.map(flashcard =>  {
-      if (updatedTopics.indexOf(flashcard.topic) === -1) {
+    flashcardStateCopy.forEach(flashcard =>  {
+      if (!updatedTopics.includes(flashcard.topic)) {
         updatedTopics.push(flashcard.topic)
       }
     })
@@ -117,32 +114,33 @@ export default class FlashCardApp extends React.Component {
   handleSelectedTopic(event) {
     const {flashcards} = this.state
     const topic = event.target.textContent
-    const flashcardsFilteredCopy = this.state.flashcards.slice(0)
-    const filteredCards = flashcardsFilteredCopy.filter(flashcard => flashcard.topic === topic)
     const updatedTopics = []
-    flashcards.map(flashcard => {
-      if (updatedTopics.indexOf(flashcard.topic) === -1) {
+    flashcards.forEach(flashcard => {
+      if (!updatedTopics.includes(flashcard.topic)) {
         updatedTopics.push(flashcard.topic)
       }
     })
     this.setState({
       view: 'Practice',
       selectedTopic: topic,
-      flashcardsFiltered: filteredCards,
       topics: updatedTopics
     })
     location.reload()
   }
   handleAll() {
-    const flashcardsAll = this.state.flashcards.slice(0)
+    const topicsCopy = this.state.topics.slice(0)
     this.setState({
       view: 'Practice',
-      flashcardsFiltered: flashcardsAll
+      selectedTopic: topicsCopy
     })
     location.reload()
   }
   renderView() {
-    const {view, flashcards, editIndex, topics, selectedTopic, flashcardsFiltered} = this.state
+    const {view, flashcards, editIndex, topics, selectedTopic,} = this.state
+    const flashcardsCopy = this.state.flashcards.slice(0)
+    const filteredCards = flashcardsCopy.filter(flashcard => flashcard.topic === selectedTopic)
+    const allCards = flashcards
+    const practiceCards = (selectedTopic.length > 1) ? allCards : filteredCards
     const cardToEdit = flashcards[editIndex]
     switch (this.state.view) {
       case 'New' :
@@ -172,7 +170,7 @@ export default class FlashCardApp extends React.Component {
           flashcards={flashcards}
           topics={topics}
           selectedTopic={selectedTopic}
-          flashcardsFiltered={flashcardsFiltered}/>
+          practiceCards={practiceCards}/>
         )
     }
   }

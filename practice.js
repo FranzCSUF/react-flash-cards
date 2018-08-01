@@ -7,7 +7,7 @@ export default class Practice extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      flashcards: this.props.flashcardsFiltered,
+      flashcards: this.props.practiceCards,
       currentCard: 0,
       answerIsShown: false,
     }
