@@ -41,7 +41,6 @@ export default class FlashCardApp extends React.Component {
   }
   handleSave(event) {
     event.preventDefault()
-    const {flashcards} = this.state
     const cardForm = event.target
     const formData = new FormData(cardForm)
     const cardObj = {}
@@ -50,19 +49,13 @@ export default class FlashCardApp extends React.Component {
     }
     const flashcardsCopy = this.state.flashcards.slice(0)
     flashcardsCopy.push(cardObj)
-    const topicsCopy = this.state.topics.slice(0)
-    if (topicsCopy.indexOf(cardObj.topic) === -1) {
-      topicsCopy.push(cardObj.topic)
+    const updatedTopics = this.state.topics.slice(0)
+    if (updatedTopics.indexOf(cardObj.topic) === -1) {
+      updatedTopics.push(cardObj.topic)
     }
-    const updatedTopics = []
-    flashcards.map(flashcard => {
-      if (updatedTopics.indexOf(flashcard.topic) === -1) {
-        updatedTopics.push(flashcard.topic)
-      }
-    })
     this.setState({
       flashcards: flashcardsCopy,
-      topics: topicsCopy
+      topics: updatedTopics
     })
     cardForm.reset()
   }
@@ -74,6 +67,7 @@ export default class FlashCardApp extends React.Component {
   }
   handlePractice() {
     this.setState({view: 'Practice'})
+    console.log(this.state.view)
   }
   handleEdit(event) {
     const index = event.target.getAttribute('data-index')
@@ -84,7 +78,6 @@ export default class FlashCardApp extends React.Component {
   }
   handleSaveEdit(event) {
     event.preventDefault()
-    const {flashcards} = this.state
     const cardForm = event.target
     const formData = new FormData(cardForm)
     const cardObj = {}
@@ -94,12 +87,8 @@ export default class FlashCardApp extends React.Component {
     }
     const flashcardsCopy = this.state.flashcards.slice(0)
     flashcardsCopy.splice(editIndex, 1, cardObj)
-    const topicsCopy = this.state.topics.slice(0)
-    if (topicsCopy.indexOf(cardObj.topic) === -1) {
-      topicsCopy.push(cardObj.topic)
-    }
-    const updatedTopics = []
-    flashcards.map(flashcard => {
+    const updatedTopics= []
+    flashcardsCopy.map(flashcard =>  {
       if (updatedTopics.indexOf(flashcard.topic) === -1) {
         updatedTopics.push(flashcard.topic)
       }
@@ -107,15 +96,22 @@ export default class FlashCardApp extends React.Component {
     this.setState({
       view: "Cards",
       flashcards: flashcardsCopy,
-      topics: topicsCopy
+      topics: updatedTopics
     })
   }
   handleDelete(event) {
     const index = event.target.getAttribute('data-index')
     const flashcardStateCopy = this.state.flashcards.slice(0)
     flashcardStateCopy.splice(index, 1)
+    const updatedTopics= []
+    flashcardStateCopy.map(flashcard =>  {
+      if (updatedTopics.indexOf(flashcard.topic) === -1) {
+        updatedTopics.push(flashcard.topic)
+      }
+    })
     this.setState({
-      flashcards: flashcardStateCopy
+      flashcards: flashcardStateCopy,
+      topics: updatedTopics
     })
   }
   handleSelectedTopic(event) {
@@ -140,6 +136,7 @@ export default class FlashCardApp extends React.Component {
   handleAll() {
     const flashcardsAll = this.state.flashcards.slice(0)
     this.setState({
+      view: 'Practice',
       flashcardsFiltered: flashcardsAll
     })
     location.reload()
