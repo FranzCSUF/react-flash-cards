@@ -17,7 +17,7 @@ export default class FlashCardApp extends React.Component {
       editIndex: JSON.parse(editIndex) || null,
       flashcards: JSON.parse(flashcards) || [],
       topics: JSON.parse(topics) || [],
-      selectedTopic: JSON.parse(selectedTopic) || []
+      selectedTopic: JSON.parse(selectedTopic) || ''
     }
     this.handleSave = this.handleSave.bind(this)
     this.handleClickCards = this.handleClickCards.bind(this)
@@ -128,10 +128,9 @@ export default class FlashCardApp extends React.Component {
     location.reload()
   }
   handleAll() {
-    const topicsCopy = this.state.topics.slice(0)
     this.setState({
       view: 'Practice',
-      selectedTopic: topicsCopy
+      selectedTopic: ''
     })
     location.reload()
   }
@@ -140,7 +139,8 @@ export default class FlashCardApp extends React.Component {
     const flashcardsCopy = this.state.flashcards.slice(0)
     const filteredCards = flashcardsCopy.filter(flashcard => flashcard.topic === selectedTopic)
     const allCards = flashcards
-    const practiceCards = (selectedTopic.length > 1) ? allCards : filteredCards
+    const practiceCards = (selectedTopic === '') ? allCards : filteredCards
+    console.log(practiceCards)
     const cardToEdit = flashcards[editIndex]
     switch (this.state.view) {
       case 'New' :
@@ -167,10 +167,7 @@ export default class FlashCardApp extends React.Component {
       case 'Practice' :
         return (
           <Practice
-          flashcards={flashcards}
-          topics={topics}
-          selectedTopic={selectedTopic}
-          practiceCards={practiceCards}/>
+          flashcards={practiceCards}/>
         )
     }
   }
