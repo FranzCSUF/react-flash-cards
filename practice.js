@@ -7,6 +7,7 @@ export default class Practice extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      flashcards: this.props.practiceCards,
       currentCard: 0,
       answerIsShown: false,
     }
@@ -20,9 +21,8 @@ export default class Practice extends React.Component {
       return {answerIsShown: !prevState.answerIsShown}
       })
     }
-
   handlePrev() {
-    const {flashcards} = this.props
+    const {flashcards} = this.state
     const {currentCard} = this.state
     this.setState({
       currentCard: currentCard === 0 ? flashcards.length - 1 : currentCard - 1,
@@ -30,7 +30,7 @@ export default class Practice extends React.Component {
     })
   }
   handleNext() {
-    const {flashcards} = this.props
+    const {flashcards} = this.state
     const {currentCard} = this.state
     this.setState({
         currentCard: currentCard === flashcards.length - 1 ? 0 : currentCard + 1,
@@ -38,15 +38,15 @@ export default class Practice extends React.Component {
     })
   }
   render() {
-    const {currentCard, answerIsShown} = this.state
-    const {flashcards} = this.props
+    const {currentCard, answerIsShown, flashcards} = this.state
     const currentFlashcard = flashcards[currentCard]
+    const topic = currentFlashcard.topic
     const question = currentFlashcard.question
     const answer = currentFlashcard.answer
     const progress = Math.round(((currentCard + 1) / flashcards.length) * 100)
     return (
       <div>
-        <PracticeCard question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer}/>
+        <PracticeCard topic={topic} question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer}/>
         <Controls handlePrev={this.handlePrev} handleNext={this.handleNext}/>
         <ProgressBar progress={progress}/>
       </div>

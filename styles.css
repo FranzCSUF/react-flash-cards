@@ -1,36 +1,45 @@
 body {
   font-size: 20rem;
-  font-family: 'Gaegu', cursive
+  font-family: 'Gaegu', cursive;
 }
 
 .card-edit-form {
   width: 36rem;
   margin: 0 auto;
-  margin-top: 3rem
+  margin-top: 3rem;
 }
 
 .cram-cards-logo {
   font-family: 'Pacifico', cursive;
-  font-size: 2rem
+  font-size: 2rem;
 }
 
 .navigation-tabs {
-  font-size: 1.25rem
+  font-size: 1.25rem;
 }
 
 .flashcard-form-labels {
-  font-size: 2rem
+  font-size: 2rem;
 }
 
 #save-button {
   text-align: center;
-  font-size: 1rem
+  font-size: 1rem;
+}
+
+#make-flashcard-button {
+  margin-top: 5rem;
 }
 
 .flash-card {
   width: 35rem;
   margin: 0 auto;
-  font-size: 1rem
+  font-size: 1rem;
+}
+
+.no-flash-container {
+  font-size: 1rem;
+  border-style: none;
 }
 
 .no-flash-cards-message {
@@ -38,25 +47,26 @@ body {
 }
 
 .card-title {
-  font-size: 2rem
+  font-size: 2rem;
 }
 
 .card-text {
-  font-size: 1.75rem
+  font-size: 1.75rem;
 }
 
 .create-card-form,
 .card-container {
-  margin-top: 12rem
+  margin-top: 12rem;
 }
 
 .edit-and-delete-icons {
-  font-size: 1.50rem;
+  font-size: 1.5rem;
 }
 
 .edit-icon {
   margin-right: 1rem;
 }
+
 .show-answer-icon {
   font-size: 1.5rem;
 }
@@ -65,7 +75,7 @@ body {
   font-family: 'Gaegu', cursive;
   font-size: 1.5rem;
   margin-left: 1rem;
-  font-weight: 400
+  font-weight: 400;
 }
 
 .practice-controls {
@@ -74,19 +84,19 @@ body {
   margin-top: 4rem;
   max-width: 24rem;
   font-size: 4.25rem;
-  color: rgb(52, 58, 64)
+  color: rgb(52, 58, 64);
 }
 
 .next-slider {
-  float: right
+  float: right;
 }
 
 .prev-slider {
-  float: left
+  float: left;
 }
 
 .progress-bar-container {
   margin: 0 auto;
   width: 36rem;
-  margin-top: 13rem
+  margin-top: 13rem;
 }

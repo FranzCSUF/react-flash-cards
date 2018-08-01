@@ -20,7 +20,7 @@ function NoCardMessage(props) {
     <div className="card no-flash-container">
     <div className="card-body no-flash-cards-message">
       <h5 className="card-title">You have no flashcards.</h5>
-      <a href="#" className="btn btn-primary create-button"  onClick={props.handleCreate}>Make One</a>
+      <a href="#" className="btn btn-primary"  id="make-flashcard-button" onClick={props.handleCreate}>Make One</a>
     </div>
   </div>
   )

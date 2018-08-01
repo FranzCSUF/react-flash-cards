@@ -1,9 +1,13 @@
 import React from 'react'
 
+function DropDownList(props) {
+  return props.topics.map((topic, index) => <a className="dropdown-item" key={index} onClick={props.handleSelectedTopic} href="#">{topic}</a>)
+}
+
 export default function Navigation(props) {
-  const cardsClass = props.view === "Cards" ? "nav-link nav-item active underline" : "nav-link nav-item"
-  const newClass = props.view === "New" ? "nav-link nav-item active underline" : "nav-link nav-item"
-  const practiceClass = props.view === "Practice" ? "underline nav-link nav-item active" : "nav-link nav-item"
+  const cardsClass = props.view === "Cards" ? "nav-link nav-item active" : "nav-link nav-item"
+  const newClass = props.view === "New" ? "nav-link nav-item active" : "nav-link nav-item"
+  const practiceClass = props.view === "Practice" ? "nav-link dropdown-toggle nav-item active" : "nav-link dropdown-toggle nav-item"
   return (
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand cram-cards-logo" href="#">Cram Cards</a>
@@ -18,11 +22,22 @@ export default function Navigation(props) {
           <li>
             <a className={newClass} href="#" onClick={props.handleCreate}>Create New</a>
           </li>
-          <li>
-            <a className={practiceClass} href="#" onClick={props.handlePractice}>Let's Cram!</a>
+          {props.flashcards.length > 0 &&
+          <li className="nav-item dropdown">
+            <a className={practiceClass} href="#" onClick={props.handlePractice} data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false" role="button">Let&apos;s Cram!</a>
+            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a className="dropdown-item" href="#">Topics</a>
+              <div className="dropdown-divider"></div>
+              <a className="dropdown-item" onClick={props.handleAll} href="#">All</a>
+              <DropDownList
+                topics={props.topics}
+                handleSelectedTopic={props.handleSelectedTopic}/>
+            </div>
           </li>
+          }
         </ul>
       </div>
     </nav>
   )
 }
+
