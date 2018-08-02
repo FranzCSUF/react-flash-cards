@@ -3,6 +3,19 @@ body {
   font-family: 'Gaegu', cursive;
 }
 
+a {
+  color: inherit;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .card-edit-form {
   width: 36rem;
   margin: 0 auto;

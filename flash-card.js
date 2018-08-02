@@ -34,9 +34,8 @@ export default class FlashCardApp extends React.Component {
     window.addEventListener('hashchange', () => {
       const { path, params } = parseHash(window.location.hash)
       this.setState({ path, params })
-      console.log(this.state)
     })
-    window.addEventListener('beforeunload', event => {
+    window.addEventListener('beforeunload', () => {
       for (var key in this.state) {
         localStorage.setItem(key, JSON.stringify(this.state[key]))
       }
@@ -62,12 +61,12 @@ export default class FlashCardApp extends React.Component {
       flashcards,
       topics
     })
+    alert('Your card has been saved.')
     cardForm.reset()
   }
   handleEdit(event) {
     const editIndex = event.target.getAttribute('data-index')
     this.setState({
-      path: 'edit-card',
       editIndex
     })
   }
@@ -89,10 +88,10 @@ export default class FlashCardApp extends React.Component {
       }
     })
     this.setState({
-      path: 'cards',
       flashcards,
       topics
     })
+    alert('Your card has been updated.')
   }
   handleDelete(event) {
     const index = event.target.getAttribute('data-index')
@@ -119,7 +118,6 @@ export default class FlashCardApp extends React.Component {
       }
     })
     this.setState({
-      path: 'practice',
       selectedTopic,
       topics
     })
@@ -127,7 +125,6 @@ export default class FlashCardApp extends React.Component {
   }
   handleAll() {
     this.setState({
-      view: 'Practice',
       selectedTopic: ''
     })
     location.reload()

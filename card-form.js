@@ -17,9 +17,9 @@ export default function CardForm (props) {
           <input type="text" name="answer" className="form-control" defaultValue={props.path === 'edit-card' ? props.cardToEdit.answer : ''}/>
         </div>
         <div id="save-button">
-        <button type="submit" className="btn btn-primary">Save</button>
+          <button className="btn btn-secondary btn-sm" role="button">Save</button>
         </div>
-      </form>
+        </form>
     </div>
   )
 }
