@@ -1,4 +1,5 @@
 import React from 'react'
+import * as queryString from './query-string'
 
 function Card(props) {
   return (
@@ -9,7 +10,9 @@ function Card(props) {
         <p className="card-text">{props.answer}</p>
         <div className="edit-and-delete-icons">
           <i className="far fa-trash-alt delete-icon float-right" data-index={props.index} onClick={props.handleDelete}></i>
-          <i className="far fa-edit edit-icon float-right" data-index={props.index} onClick={props.handleEdit}></i>
+          <a href={'#edit-card' + queryString.stringify({'cardindex': props.index + 1})}>
+            <i className="far fa-edit edit-icon float-right" data-index={props.index} onClick={props.handleEdit}></i>
+          </a>
         </div>
       </div>
     </div>
@@ -20,7 +23,7 @@ function NoCardMessage(props) {
     <div className="card no-flash-container">
     <div className="card-body no-flash-cards-message">
       <h5 className="card-title">You have no flashcards.</h5>
-      <a href="#" className="btn btn-primary"  id="make-flashcard-button" onClick={props.handleCreate}>Make One</a>
+      <a href="#new-card" className="btn btn-primary"  id="make-flashcard-button" onClick={props.handleCreate}>Make One</a>
     </div>
   </div>
   )

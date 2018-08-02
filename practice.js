@@ -7,7 +7,6 @@ export default class Practice extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      flashcards: this.props.practiceCards,
       currentCard: 0,
       answerIsShown: false,
     }
@@ -22,7 +21,7 @@ export default class Practice extends React.Component {
       })
     }
   handlePrev() {
-    const {flashcards} = this.state
+    const {flashcards} = this.props
     const {currentCard} = this.state
     this.setState({
       currentCard: currentCard === 0 ? flashcards.length - 1 : currentCard - 1,
@@ -30,7 +29,7 @@ export default class Practice extends React.Component {
     })
   }
   handleNext() {
-    const {flashcards} = this.state
+    const {flashcards} = this.props
     const {currentCard} = this.state
     this.setState({
         currentCard: currentCard === flashcards.length - 1 ? 0 : currentCard + 1,
@@ -38,7 +37,8 @@ export default class Practice extends React.Component {
     })
   }
   render() {
-    const {currentCard, answerIsShown, flashcards} = this.state
+    const {currentCard, answerIsShown} = this.state
+    const {flashcards} = this.props
     const currentFlashcard = flashcards[currentCard]
     const topic = currentFlashcard.topic
     const question = currentFlashcard.question

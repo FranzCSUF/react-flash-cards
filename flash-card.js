@@ -3,39 +3,46 @@ import Navigation from './nav-bar'
 import Cards from './cards'
 import Practice from './practice'
 import CardForm from './card-form'
+import parseHash from './parse-hash'
+import * as queryString from './query-string'
 
 export default class FlashCardApp extends React.Component {
   constructor(props) {
     super(props)
-    const view = window.localStorage.getItem('view')
+    const { path, params } = parseHash(window.location.hash)
     const flashcards = window.localStorage.getItem('flashcards')
     const editIndex = window.localStorage.getItem('edit')
     const topics = window.localStorage.getItem('topics')
     const selectedTopic = window.localStorage.getItem('selectedTopic')
     this.state = {
-      view: JSON.parse(view) || 'New',
+      path,
+      params,
       editIndex: JSON.parse(editIndex) || null,
       flashcards: JSON.parse(flashcards) || [],
       topics: JSON.parse(topics) || [],
-      selectedTopic: JSON.parse(selectedTopic) || []
+      selectedTopic: JSON.parse(selectedTopic) || ''
     }
     this.handleSave = this.handleSave.bind(this)
-    this.handleClickCards = this.handleClickCards.bind(this)
-    this.handleCreate = this.handleCreate.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
     this.handleSaveEdit = this.handleSaveEdit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
-    this.handlePractice = this.handlePractice.bind(this)
     this.renderView = this.renderView.bind(this)
     this.handleSelectedTopic = this.handleSelectedTopic.bind(this)
     this.handleAll = this.handleAll.bind(this)
   }
   componentDidMount() {
-    window.addEventListener('beforeunload', event => {
+    window.addEventListener('hashchange', () => {
+      const { path, params } = parseHash(window.location.hash)
+      this.setState({ path, params })
+    })
+    window.addEventListener('beforeunload', () => {
       for (var key in this.state) {
         localStorage.setItem(key, JSON.stringify(this.state[key]))
       }
     })
+  }
+  navigate({ path, params }) {
+    window.location.hash = path + queryString.stringify(params)
   }
   handleSave(event) {
     event.preventDefault()
@@ -45,32 +52,22 @@ export default class FlashCardApp extends React.Component {
     for (var pair of formData.entries()) {
       cardObj[pair[0]] = pair[1]
     }
-    const flashcardsCopy = this.state.flashcards.slice(0)
-    flashcardsCopy.push(cardObj)
-    const updatedTopics = this.state.topics.slice(0)
-    if (updatedTopics.indexOf(cardObj.topic) === -1) {
-      updatedTopics.push(cardObj.topic)
+    const flashcards = [...this.state.flashcards, cardObj]
+    const topics = [...this.state.topics]
+    if (!topics.includes(cardObj.topic)) {
+      topics.push(cardObj.topic)
     }
     this.setState({
-      flashcards: flashcardsCopy,
-      topics: updatedTopics
+      flashcards,
+      topics
     })
+    alert('Your card has been saved.')
     cardForm.reset()
   }
-  handleClickCards() {
-    this.setState({view: 'Cards'})
-  }
-  handleCreate() {
-    this.setState({view: 'New'})
-  }
-  handlePractice() {
-    this.setState({view: 'Practice'})
-  }
   handleEdit(event) {
-    const index = event.target.getAttribute('data-index')
+    const editIndex = event.target.getAttribute('data-index')
     this.setState({
-      view: "Edit",
-      editIndex: index
+      editIndex
     })
   }
   handleSaveEdit(event) {
@@ -82,81 +79,77 @@ export default class FlashCardApp extends React.Component {
     for (var pair of formData.entries()) {
       cardObj[pair[0]] = pair[1]
     }
-    const flashcardsCopy = this.state.flashcards.slice(0)
-    flashcardsCopy.splice(editIndex, 1, cardObj)
-    const updatedTopics= []
-    flashcardsCopy.forEach(flashcard =>  {
-      if (!updatedTopics.includes(flashcard.topic)) {
-        updatedTopics.push(flashcard.topic)
+    const flashcards = this.state.flashcards.slice(0)
+    flashcards.splice(editIndex, 1, cardObj)
+    const topics= []
+    flashcards.forEach(flashcard =>  {
+      if (!topics.includes(flashcard.topic)) {
+        topics.push(flashcard.topic)
       }
     })
     this.setState({
-      view: "Cards",
-      flashcards: flashcardsCopy,
-      topics: updatedTopics
+      flashcards,
+      topics
     })
+    alert('Your card has been updated.')
   }
   handleDelete(event) {
     const index = event.target.getAttribute('data-index')
-    const flashcardStateCopy = this.state.flashcards.slice(0)
-    flashcardStateCopy.splice(index, 1)
-    const updatedTopics= []
-    flashcardStateCopy.forEach(flashcard =>  {
-      if (!updatedTopics.includes(flashcard.topic)) {
-        updatedTopics.push(flashcard.topic)
+    const flashcards = [...this.state.flashcards]
+    flashcards.splice(index, 1)
+    const topics= []
+    flashcards.forEach(flashcard =>  {
+      if (!topics.includes(flashcard.topic)) {
+        topics.push(flashcard.topic)
       }
     })
     this.setState({
-      flashcards: flashcardStateCopy,
-      topics: updatedTopics
+      flashcards,
+      topics
     })
   }
   handleSelectedTopic(event) {
     const {flashcards} = this.state
-    const topic = event.target.textContent
-    const updatedTopics = []
+    const selectedTopic = event.target.textContent
+    const topics = []
     flashcards.forEach(flashcard => {
-      if (!updatedTopics.includes(flashcard.topic)) {
-        updatedTopics.push(flashcard.topic)
+      if (!topics.includes(flashcard.topic)) {
+        topics.push(flashcard.topic)
       }
     })
     this.setState({
-      view: 'Practice',
-      selectedTopic: topic,
-      topics: updatedTopics
+      selectedTopic,
+      topics
     })
     location.reload()
   }
   handleAll() {
-    const topicsCopy = this.state.topics.slice(0)
     this.setState({
-      view: 'Practice',
-      selectedTopic: topicsCopy
+      selectedTopic: ''
     })
     location.reload()
   }
   renderView() {
-    const {view, flashcards, editIndex, topics, selectedTopic,} = this.state
-    const flashcardsCopy = this.state.flashcards.slice(0)
-    const filteredCards = flashcardsCopy.filter(flashcard => flashcard.topic === selectedTopic)
+    const {path, flashcards, editIndex, selectedTopic,} = this.state
+    const filteredCards = flashcards.filter(flashcard => flashcard.topic === selectedTopic)
     const allCards = flashcards
-    const practiceCards = (selectedTopic.length > 1) ? allCards : filteredCards
+    const practiceCards = (selectedTopic === '') ? allCards : filteredCards
     const cardToEdit = flashcards[editIndex]
-    switch (this.state.view) {
-      case 'New' :
+    switch (this.state.path) {
+      case 'new-card' :
         return (
           <CardForm
           handleSave={this.handleSave}
-          view={view}/>
+          path={path}/>
         )
-      case 'Edit' :
+      case 'edit-card' :
         return (
           <CardForm
           handleSave={this.handleSaveEdit}
-          view={view}
+          path={path}
           cardToEdit={cardToEdit}/>
         )
-      case 'Cards' :
+      case 'cards' :
         return (
           <Cards
           flashcards={flashcards}
@@ -164,13 +157,10 @@ export default class FlashCardApp extends React.Component {
           handleEdit={this.handleEdit}
           handleDelete={this.handleDelete}/>
         )
-      case 'Practice' :
+      case 'practice' :
         return (
           <Practice
-          flashcards={flashcards}
-          topics={topics}
-          selectedTopic={selectedTopic}
-          practiceCards={practiceCards}/>
+          flashcards={practiceCards}/>
         )
     }
   }

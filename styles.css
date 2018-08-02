@@ -3,6 +3,10 @@ body {
   font-family: 'Gaegu', cursive;
 }
 
+a {
+  color: inherit;
+}
+
 .card-edit-form {
   width: 36rem;
   margin: 0 auto;

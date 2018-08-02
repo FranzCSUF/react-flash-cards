@@ -1,7 +1,7 @@
 import React from 'react'
 
 function DropDownList(props) {
-  return props.topics.map((topic, index) => <a className="dropdown-item" key={index} onClick={props.handleSelectedTopic} href="#">{topic}</a>)
+  return props.topics.map((topic, index) => <a className="dropdown-item" key={index} onClick={props.handleSelectedTopic} href="#practice">{topic}</a>)
 }
 
 export default function Navigation(props) {
@@ -17,10 +17,10 @@ export default function Navigation(props) {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto navigation-tabs">
           <li>
-            <a className={cardsClass} href="#" onClick={props.handleClickCards}>Cards</a>
+            <a className={cardsClass} href="#cards" onClick={props.handleClickCards}>Cards</a>
           </li>
           <li>
-            <a className={newClass} href="#" onClick={props.handleCreate}>Create New</a>
+            <a className={newClass} href="#new-card" onClick={props.handleCreate}>Create New</a>
           </li>
           {props.flashcards.length > 0 &&
           <li className="nav-item dropdown">
@@ -28,7 +28,7 @@ export default function Navigation(props) {
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a className="dropdown-item" href="#">Topics</a>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" onClick={props.handleAll} href="#">All</a>
+              <a className="dropdown-item" onClick={props.handleAll} href="#practice">All</a>
               <DropDownList
                 topics={props.topics}
                 handleSelectedTopic={props.handleSelectedTopic}/>
