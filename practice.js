@@ -14,7 +14,6 @@ export default class Practice extends React.Component {
     this.handlePrev = this.handlePrev.bind(this)
     this.handleNext = this.handleNext.bind(this)
   }
-
   handleShowAnswer() {
     this.setState(prevState => {
       return {answerIsShown: !prevState.answerIsShown}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function CardForm (props) {
+export default function CardForm(props) {
   return (
     <div className="create-card-form">
       <form onSubmit={props.handleSave} className="border card-body card-edit-form">
@@ -19,7 +19,7 @@ export default function CardForm (props) {
         <div id="save-button">
           <button className="btn btn-secondary btn-sm" role="button">Save</button>
         </div>
-        </form>
+      </form>
     </div>
   )
 }
