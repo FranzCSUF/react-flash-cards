@@ -29,6 +29,7 @@ export default class FlashCardApp extends React.Component {
     this.renderView = this.renderView.bind(this)
     this.handleSelectedTopic = this.handleSelectedTopic.bind(this)
     this.handleAll = this.handleAll.bind(this)
+    this.handleCorrectAttempt = this.handleCorrectAttempt.bind(this)
   }
   componentDidMount() {
     window.addEventListener('hashchange', () => {
@@ -52,6 +53,8 @@ export default class FlashCardApp extends React.Component {
     for (var pair of formData.entries()) {
       cardObj[pair[0]] = pair[1]
     }
+    cardObj.correct = 0
+    cardObj.failures = 0
     const flashcards = [...this.state.flashcards, cardObj]
     const topics = [...this.state.topics]
     if (!topics.includes(cardObj.topic)) {
@@ -62,6 +65,7 @@ export default class FlashCardApp extends React.Component {
       topics
     })
     alert('Your card has been saved.')
+    console.log(this.state.flashcards)
     cardForm.reset()
   }
   handleEdit(event) {
@@ -129,6 +133,9 @@ export default class FlashCardApp extends React.Component {
     })
     location.reload()
   }
+  handleCorrectAttempt() {
+    console.log('hello')
+  }
   renderView() {
     const {path, flashcards, editIndex, selectedTopic,} = this.state
     const filteredCards = flashcards.filter(flashcard => flashcard.topic === selectedTopic)
@@ -160,7 +167,8 @@ export default class FlashCardApp extends React.Component {
       case 'practice' :
         return (
           <Practice
-          flashcards={practiceCards}/>
+          flashcards={practiceCards}
+          handleCorrectAttempt={this.handleCorrectAttempt}/>
         )
     }
   }
