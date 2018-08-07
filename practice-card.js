@@ -6,7 +6,7 @@ export default function PracticeCard(props) {
       <div className="card text-white bg-dark mb-3 flash-card" id="flashcard" key={props.index}>
         <div className="card-header">{props.topic}</div>
         <div className="card-body practice-card">
-          <h5 className="card-title">{props.question}</h5>
+          <h5 className="card-title" id='practice-question'>{props.question}</h5>
           {!props.answerIsShown &&
             <i className="fas fa-arrow-circle-right show-answer-icon" onClick={props.handleShowAnswer}><span className="show-answer-label">Show answer</span></i>
           }

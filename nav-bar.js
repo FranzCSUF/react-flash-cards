@@ -5,15 +5,15 @@ function DropDownList(props) {
 }
 
 export default function Navigation(props) {
-  const cardsClass = props.view === "Cards" ? "nav-link nav-item active" : "nav-link nav-item"
-  const newClass = props.view === "New" ? "nav-link nav-item active" : "nav-link nav-item"
-  const practiceClass = props.view === "Practice" ? "nav-link dropdown-toggle nav-item active" : "nav-link dropdown-toggle nav-item"
+  const cardsClass = props.view === 'Cards' ? 'nav-link nav-item active' : 'nav-link nav-item'
+  const newClass = props.view === 'New' ? 'nav-link nav-item active' : 'nav-link nav-item'
+  const practiceClass = props.view === 'Practice' ? 'nav-link dropdown-toggle nav-item active' : 'nav-link dropdown-toggle nav-item'
   return (
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand cram-cards-logo" href="#">Cram Cards</a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto navigation-tabs">
           <li>
@@ -40,4 +40,3 @@ export default function Navigation(props) {
     </nav>
   )
 }
-

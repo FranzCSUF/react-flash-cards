@@ -21,11 +21,11 @@ function Card(props) {
 function NoCardMessage(props) {
   return (
     <div className="card no-flash-container">
-    <div className="card-body no-flash-cards-message">
-      <h5 className="card-title">You have no flashcards.</h5>
-      <a href="#new-card" className="btn btn-primary"  id="make-flashcard-button" onClick={props.handleCreate}>Make One</a>
+      <div className="card-body no-flash-cards-message">
+        <h5 className="card-title">You have no flashcards.</h5>
+        <a href="#new-card" className="btn btn-primary" id="make-flashcard-button" onClick={props.handleCreate}>Make One</a>
+      </div>
     </div>
-  </div>
   )
 }
 export default function Cards(props) {
@@ -43,9 +43,8 @@ export default function Cards(props) {
           handleDelete={props.handleDelete}/>)}
       {numFlashcards === 0 &&
         <NoCardMessage
-        handleCreate={props.handleCreate}/>
+          handleCreate={props.handleCreate}/>
       }
     </div>
   )
 }
-

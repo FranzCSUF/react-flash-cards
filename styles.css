@@ -87,7 +87,7 @@ a {
   margin: 0 auto;
   margin-top: 4rem;
   max-width: 24rem;
-  font-size: 4.25rem;
+  font-size: 3rem;
   color: rgb(52, 58, 64);
 }
 
@@ -97,6 +97,16 @@ a {
 
 .prev-slider {
   float: left;
+}
+
+.correct-icon {
+  float: right;
+  margin-right: 2rem;
+}
+
+.failed-icon {
+  float: left;
+  margin-left: 2rem;
 }
 
 .progress-bar-container {

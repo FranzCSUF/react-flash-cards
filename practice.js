@@ -8,18 +8,17 @@ export default class Practice extends React.Component {
     super(props)
     this.state = {
       currentCard: 0,
-      answerIsShown: false,
+      answerIsShown: false
     }
     this.handleShowAnswer = this.handleShowAnswer.bind(this)
     this.handlePrev = this.handlePrev.bind(this)
     this.handleNext = this.handleNext.bind(this)
   }
-
   handleShowAnswer() {
     this.setState(prevState => {
       return {answerIsShown: !prevState.answerIsShown}
-      })
-    }
+    })
+  }
   handlePrev() {
     const {flashcards} = this.props
     const {currentCard} = this.state
@@ -33,7 +32,7 @@ export default class Practice extends React.Component {
     const {currentCard} = this.state
     this.setState({
         currentCard: currentCard === flashcards.length - 1 ? 0 : currentCard + 1,
-        answerIsShown: false,
+        answerIsShown: false
     })
   }
   render() {
@@ -46,8 +45,8 @@ export default class Practice extends React.Component {
     const progress = Math.round(((currentCard + 1) / flashcards.length) * 100)
     return (
       <div>
-        <PracticeCard topic={topic} question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer}/>
-        <Controls handlePrev={this.handlePrev} handleNext={this.handleNext}/>
+        <PracticeCard topic={topic} question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer} flashcards={this.props.flashcards}/>
+        <Controls handlePrev={this.handlePrev} handleNext={this.handleNext} handleCorrectAttempt={this.props.handleCorrectAttempt} handleFailedAttempt={this.props.handleFailedAttempt}/>
         <ProgressBar progress={progress}/>
       </div>
     )
