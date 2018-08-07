@@ -146,6 +146,9 @@ export default class FlashCardApp extends React.Component {
     flashcardsCopy[cardIndex].correct += 1
     console.log(flashcardsCopy)
   }
+  handleFailedAttempt () {
+
+  }
   renderView() {
     const {path, flashcards, editIndex, selectedTopic,} = this.state
     const filteredCards = flashcards.filter(flashcard => flashcard.topic === selectedTopic)
@@ -178,7 +181,8 @@ export default class FlashCardApp extends React.Component {
         return (
           <Practice
           flashcards={practiceCards}
-          handleCorrectAttempt={this.handleCorrectAttempt}/>
+          handleCorrectAttempt={this.handleCorrectAttempt}
+          handleFailedAttempt={this.handleFailedAttempt}/>
         )
     }
   }

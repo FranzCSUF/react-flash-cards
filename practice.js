@@ -46,7 +46,7 @@ export default class Practice extends React.Component {
     return (
       <div>
         <PracticeCard topic={topic} question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer} flashcards={this.props.flashcards}/>
-        <Controls handlePrev={this.handlePrev} handleNext={this.handleNext} handleCorrectAttempt={this.props.handleCorrectAttempt}/>
+        <Controls handlePrev={this.handlePrev} handleNext={this.handleNext} handleCorrectAttempt={this.props.handleCorrectAttempt} handleFailedAttempt={this.props.handleFailedAttempt}/>
         <ProgressBar progress={progress}/>
       </div>
     )
