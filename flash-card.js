@@ -30,6 +30,7 @@ export default class FlashCardApp extends React.Component {
     this.handleSelectedTopic = this.handleSelectedTopic.bind(this)
     this.handleAll = this.handleAll.bind(this)
     this.handleCorrectAttempt = this.handleCorrectAttempt.bind(this)
+    this.handleFailedAttempt = this.handleFailedAttempt.bind(this)
   }
   componentDidMount() {
     window.addEventListener('hashchange', () => {
@@ -134,7 +135,7 @@ export default class FlashCardApp extends React.Component {
     location.reload()
   }
   handleCorrectAttempt() {
-    const{flashcards} = this.state
+    const {flashcards} = this.state
     const question = document.getElementById('practice-question').textContent
     let cardIndex = null
     flashcards.forEach((flashcard, index) => {
@@ -144,10 +145,19 @@ export default class FlashCardApp extends React.Component {
     })
     const flashcardsCopy = [...this.state.flashcards]
     flashcardsCopy[cardIndex].correct += 1
-    console.log(flashcardsCopy)
   }
-  handleFailedAttempt () {
-
+  handleFailedAttempt() {
+    const {flashcards} = this.state
+    const question = document.getElementById('practice-question').textContent
+    let cardIndex = null
+    flashcards.forEach((flashcard, index) => {
+      if (flashcard.question === question) {
+        cardIndex = index
+      }
+    })
+    const flashcardsCopy = [...this.state.flashcards]
+    flashcardsCopy[cardIndex].failures += 1
+    console.log(flashcardsCopy)
   }
   renderView() {
     const {path, flashcards, editIndex, selectedTopic,} = this.state
