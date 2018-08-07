@@ -134,7 +134,17 @@ export default class FlashCardApp extends React.Component {
     location.reload()
   }
   handleCorrectAttempt() {
-    console.log('hello')
+    const{flashcards} = this.state
+    const question = document.getElementById('practice-question').textContent
+    let cardIndex = null
+    flashcards.forEach((flashcard, index) => {
+      if (flashcard.question === question) {
+        cardIndex = index
+      }
+    })
+    const flashcardsCopy = [...this.state.flashcards]
+    flashcardsCopy[cardIndex].correct += 1
+    console.log(flashcardsCopy)
   }
   renderView() {
     const {path, flashcards, editIndex, selectedTopic,} = this.state
