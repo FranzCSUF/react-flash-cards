@@ -5,9 +5,9 @@ function DropDownList(props) {
 }
 
 export default function Navigation(props) {
-  const cardsClass = props.view === 'Cards' ? 'nav-link nav-item active' : 'nav-link nav-item'
-  const newClass = props.view === 'New' ? 'nav-link nav-item active' : 'nav-link nav-item'
-  const practiceClass = props.view === 'Practice' ? 'nav-link dropdown-toggle nav-item active' : 'nav-link dropdown-toggle nav-item'
+  const cardsClass = props.view === 'Cards' ? 'nav-link nav-item active nav-labels' : 'nav-link nav-item nav-labels'
+  const newClass = props.view === 'New' ? 'nav-link nav-item active nav-labels' : 'nav-link nav-item nav-labels'
+  const practiceClass = props.view === 'Practice' ? 'nav-link dropdown-toggle nav-item active nav-labels' : 'nav-link dropdown-toggle nav-item nav-labels'
   return (
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand cram-cards-logo" href="#">Cram Cards</a>
