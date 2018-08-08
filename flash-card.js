@@ -157,6 +157,7 @@ export default class FlashCardApp extends React.Component {
     })
     const flashcardsCopy = [...this.state.flashcards]
     flashcardsCopy[cardIndex].failures += 1
+    console.log(flashcardsCopy)
   }
   renderView() {
     const {path, flashcards, editIndex, selectedTopic,} = this.state
