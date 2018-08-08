@@ -103,6 +103,13 @@ a {
   transform: scale(1.3);
 }
 
+.fa-check-circle:active,
+.fa-angle-right:active,
+.fa-times-circle:active,
+.fa-angle-left:active {
+  transform: scale(1.6);
+}
+
 .fa-trash-alt,
 .fa-arrow-circle-right,
 .fa-arrow-circle-down,
