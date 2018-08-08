@@ -57,7 +57,7 @@ a {
 
 .create-card-form,
 .card-container {
-  margin-top: 12rem;
+  margin-top: 14rem;
 }
 
 .edit-and-delete-icons {
@@ -77,6 +77,42 @@ a {
   font-size: 1.5rem;
   margin-left: 1rem;
   font-weight: 400;
+}
+
+.fa-arrow-circle-right,
+.fa-arrow-circle-down {
+  color: rgb(151, 153, 156);
+}
+
+.fa-edit:hover,
+.fa-trash-alt:hover,
+.fa-arrow-circle-right:hover,
+.fa-arrow-circle-down:hover {
+  color: white;
+}
+
+.fa-edit:hover,
+.fa-trash-alt:hover {
+  transform: scale(1.2);
+}
+
+.fa-check-circle:hover,
+.fa-angle-right:hover,
+.fa-times-circle:hover,
+.fa-angle-left:hover {
+  transform: scale(1.3);
+}
+
+.fa-trash-alt,
+.fa-arrow-circle-right,
+.fa-arrow-circle-down,
+.fa-edit,
+.fa-trash-alt {
+  transition: .15s ease-in-out;
+}
+
+.btn-secondary:hover {
+  background-color: #007bff;
 }
 
 .practice-controls {

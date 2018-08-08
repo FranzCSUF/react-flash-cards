@@ -44,7 +44,7 @@ export default class Practice extends React.Component {
     const answer = currentFlashcard.answer
     const progress = Math.round(((currentCard + 1) / flashcards.length) * 100)
     return (
-      <div className="container col-lg-4">
+      <div className="container col-md-4">
         <PracticeCard topic={topic} question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer} flashcards={this.props.flashcards}/>
         <Controls handlePrev={this.handlePrev} handleNext={this.handleNext} handleCorrectAttempt={this.props.handleCorrectAttempt} handleFailedAttempt={this.props.handleFailedAttempt}/>
         <ProgressBar progress={progress}/>
