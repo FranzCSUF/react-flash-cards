@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CardForm(props) {
   return (
-    <div className="create-card-form">
+    <div className="container col-md-4 create-card-form">
       <form onSubmit={props.handleSave} className="border card-body card-edit-form">
         <div className="form-group flashcard-form-labels">
           <label htmlFor="inputTopic">Topic</label>

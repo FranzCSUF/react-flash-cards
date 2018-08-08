@@ -8,9 +8,7 @@ a {
 }
 
 .card-edit-form {
-  width: 36rem;
   margin: 0 auto;
-  margin-top: 3rem;
 }
 
 .cram-cards-logo {
@@ -36,7 +34,6 @@ a {
 }
 
 .flash-card {
-  width: 35rem;
   margin: 0 auto;
   font-size: 1rem;
 }
@@ -111,6 +108,5 @@ a {
 
 .progress-bar-container {
   margin: 0 auto;
-  width: 36rem;
   margin-top: 13rem;
 }
