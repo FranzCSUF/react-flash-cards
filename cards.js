@@ -31,7 +31,7 @@ function NoCardMessage(props) {
 export default function Cards(props) {
   const numFlashcards = props.flashcards.length
   return (
-    <div className="container card-container col-md-4">
+    <div className="card-container container col-md-5">
       {numFlashcards > 0 &&
         props.flashcards.map((card, index) => <Card
           key={index}

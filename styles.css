@@ -19,6 +19,10 @@ a {
   margin: 0 auto;
 }
 
+.form-control {
+  font-size: 1.25rem;
+}
+
 .cram-cards-logo {
   font-family: 'Pacifico', cursive;
   font-size: 2rem;
@@ -29,7 +33,7 @@ a {
 }
 
 .flashcard-form-labels {
-  font-size: 2rem;
+  font-size: 1.25rem;
 }
 
 #save-button {
@@ -39,11 +43,19 @@ a {
 
 #make-flashcard-button {
   margin-top: 5rem;
+  font-size: 1rem;
 }
 
 .flash-card {
   margin: 0 auto;
   font-size: 1rem;
+  min-height: 15rem;
+}
+
+.practice-flash-card {
+  margin: 0 auto;
+  font-size: 1rem;
+  min-height: 15rem;
 }
 
 .no-flash-container {
@@ -55,12 +67,17 @@ a {
   text-align: center;
 }
 
+.card-header {
+  font-size: 1.25rem;
+}
+
 .card-title {
   font-size: 2rem;
 }
 
 .card-text {
   font-size: 1.75rem;
+  min-height: 5rem;
 }
 
 .create-card-form,
@@ -87,23 +104,6 @@ a {
   font-weight: 400;
 }
 
-.fa-arrow-circle-right,
-.fa-arrow-circle-down {
-  color: rgb(151, 153, 156);
-}
-
-.fa-edit:hover,
-.fa-trash-alt:hover,
-.fa-arrow-circle-right:hover,
-.fa-arrow-circle-down:hover {
-  color: white;
-}
-
-.fa-edit:hover,
-.fa-trash-alt:hover {
-  transform: scale(1.2);
-}
-
 .fa-check-circle:hover,
 .fa-angle-right:hover,
 .fa-times-circle:hover,
@@ -118,12 +118,36 @@ a {
   transform: scale(1.6);
 }
 
+.fa-check-circle,
+.fa-angle-right,
+.fa-times-circle,
+.fa-angle-left {
+  cursor: pointer;
+}
+
+.fa-trash-alt:hover,
+.fa-edit:hover {
+  transform: scale(1.25);
+}
+
 .fa-trash-alt,
-.fa-arrow-circle-right,
-.fa-arrow-circle-down,
 .fa-edit,
-.fa-trash-alt {
+.fa-arrow-circle-right,
+.fa-arrow-circle-down {
+  cursor: pointer;
   transition: .15s ease-in-out;
+}
+
+.fa-trash-alt:hover,
+.fa-edit:hover,
+.fa-arrow-circle-right:hover,
+.fa-arrow-circle-down:hover {
+  color: white;
+}
+
+.fa-arrow-circle-right,
+.fa-arrow-circle-down {
+  color: rgb(151, 153, 156);
 }
 
 .btn-secondary:hover {
@@ -131,7 +155,6 @@ a {
 }
 
 .practice-controls {
-  display: block;
   margin: 0 auto;
   margin-top: 4rem;
   max-width: 24rem;
@@ -159,5 +182,5 @@ a {
 
 .progress-bar-container {
   margin: 0 auto;
-  margin-top: 13rem;
+  margin-top: 11rem;
 }

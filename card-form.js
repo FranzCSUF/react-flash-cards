@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CardForm(props) {
   return (
-    <div className="container col-md-4 create-card-form">
+    <div className="container col-md-5 create-card-form">
       <form onSubmit={props.handleSave} className="border card-body card-edit-form">
         <div className="form-group flashcard-form-labels">
           <label htmlFor="inputTopic">Topic</label>
@@ -17,7 +17,7 @@ export default function CardForm(props) {
           <input type="text" name="answer" className="form-control" defaultValue={props.path === 'edit-card' ? props.cardToEdit.answer : ''}/>
         </div>
         <div id="save-button">
-          <button className="btn btn-secondary btn-sm" role="button">Save</button>
+          <button className="btn btn-secondary btn-md" role="button">Save</button>
         </div>
       </form>
     </div>
