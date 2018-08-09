@@ -7,10 +7,20 @@ a {
   color: inherit;
 }
 
+.nav-labels {
+  transition: .15s ease-in-out;
+}
+
+.nav-labels:hover {
+  transform: scale(1.1);
+}
+
 .card-edit-form {
-  width: 36rem;
   margin: 0 auto;
-  margin-top: 3rem;
+}
+
+.form-control {
+  font-size: 1.25rem;
 }
 
 .cram-cards-logo {
@@ -23,7 +33,7 @@ a {
 }
 
 .flashcard-form-labels {
-  font-size: 2rem;
+  font-size: 1.25rem;
 }
 
 #save-button {
@@ -33,12 +43,19 @@ a {
 
 #make-flashcard-button {
   margin-top: 5rem;
+  font-size: 1rem;
 }
 
 .flash-card {
-  width: 35rem;
   margin: 0 auto;
   font-size: 1rem;
+  min-height: 15rem;
+}
+
+.practice-flash-card {
+  margin: 0 auto;
+  font-size: 1rem;
+  min-height: 15rem;
 }
 
 .no-flash-container {
@@ -50,17 +67,22 @@ a {
   text-align: center;
 }
 
+.card-header {
+  font-size: 1.25rem;
+}
+
 .card-title {
   font-size: 2rem;
 }
 
 .card-text {
   font-size: 1.75rem;
+  min-height: 5rem;
 }
 
 .create-card-form,
 .card-container {
-  margin-top: 12rem;
+  margin-top: 14rem;
 }
 
 .edit-and-delete-icons {
@@ -82,8 +104,57 @@ a {
   font-weight: 400;
 }
 
+.fa-check-circle:hover,
+.fa-angle-right:hover,
+.fa-times-circle:hover,
+.fa-angle-left:hover {
+  transform: scale(1.3);
+}
+
+.fa-check-circle:active,
+.fa-angle-right:active,
+.fa-times-circle:active,
+.fa-angle-left:active {
+  transform: scale(1.6);
+}
+
+.fa-check-circle,
+.fa-angle-right,
+.fa-times-circle,
+.fa-angle-left {
+  cursor: pointer;
+}
+
+.fa-trash-alt:hover,
+.fa-edit:hover {
+  transform: scale(1.25);
+}
+
+.fa-trash-alt,
+.fa-edit,
+.fa-arrow-circle-right,
+.fa-arrow-circle-down {
+  cursor: pointer;
+  transition: .15s ease-in-out;
+}
+
+.fa-trash-alt:hover,
+.fa-edit:hover,
+.fa-arrow-circle-right:hover,
+.fa-arrow-circle-down:hover {
+  color: white;
+}
+
+.fa-arrow-circle-right,
+.fa-arrow-circle-down {
+  color: rgb(151, 153, 156);
+}
+
+.btn-secondary:hover {
+  background-color: #007bff;
+}
+
 .practice-controls {
-  display: block;
   margin: 0 auto;
   margin-top: 4rem;
   max-width: 24rem;
@@ -111,6 +182,5 @@ a {
 
 .progress-bar-container {
   margin: 0 auto;
-  width: 36rem;
-  margin-top: 13rem;
+  margin-top: 11rem;
 }

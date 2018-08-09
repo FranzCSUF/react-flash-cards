@@ -1,7 +1,5 @@
 import React from 'react'
 import PracticeCard from './practice-card'
-import Controls from './practice-controls'
-import ProgressBar from './progress-bar'
 
 export default class Practice extends React.Component {
   constructor(props) {
@@ -45,9 +43,18 @@ export default class Practice extends React.Component {
     const progress = Math.round(((currentCard + 1) / flashcards.length) * 100)
     return (
       <div>
-        <PracticeCard topic={topic} question={question} answer={answer} answerIsShown={answerIsShown} handleShowAnswer={this.handleShowAnswer} flashcards={this.props.flashcards}/>
-        <Controls handlePrev={this.handlePrev} handleNext={this.handleNext} handleCorrectAttempt={this.props.handleCorrectAttempt} handleFailedAttempt={this.props.handleFailedAttempt}/>
-        <ProgressBar progress={progress}/>
+        <PracticeCard
+          topic={topic}
+          question={question}
+          answer={answer}
+          answerIsShown={answerIsShown}
+          handleShowAnswer={this.handleShowAnswer}
+          flashcards={this.props.flashcards}
+          handlePrev={this.handlePrev}
+          handleNext={this.handleNext}
+          handleCorrectAttempt={this.props.handleCorrectAttempt}
+          handleFailedAttempt={this.props.handleFailedAttempt}
+          progress={progress}/>
       </div>
     )
   }
